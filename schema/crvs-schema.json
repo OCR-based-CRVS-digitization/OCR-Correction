@@ -1,0 +1,2189 @@
+[
+  {
+    "name": "STUDENT_NAME",
+    "type": "OCR_WORD",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          525,
+          665,
+          1070,
+          43
+        ]
+      }
+    ]
+  },
+  {
+    "name": "STUDENT_NAME_ENGLISH",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          521,
+          722,
+          27,
+          41
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          552,
+          721,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 2,
+        "region": [
+          583,
+          721,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 3,
+        "region": [
+          614,
+          721,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 4,
+        "region": [
+          646,
+          721,
+          26,
+          44
+        ]
+      },
+      {
+        "index": 5,
+        "region": [
+          676,
+          721,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 6,
+        "region": [
+          706,
+          721,
+          28,
+          44
+        ]
+      },
+      {
+        "index": 7,
+        "region": [
+          738,
+          721,
+          26,
+          45
+        ]
+      },
+      {
+        "index": 8,
+        "region": [
+          769,
+          723,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 9,
+        "region": [
+          799,
+          722,
+          28,
+          44
+        ]
+      },
+      {
+        "index": 10,
+        "region": [
+          831,
+          723,
+          26,
+          43
+        ]
+      },
+      {
+        "index": 11,
+        "region": [
+          861,
+          723,
+          26,
+          43
+        ]
+      },
+      {
+        "index": 12,
+        "region": [
+          891,
+          723,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 13,
+        "region": [
+          922,
+          723,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 14,
+        "region": [
+          953,
+          723,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 15,
+        "region": [
+          983,
+          724,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 16,
+        "region": [
+          1015,
+          725,
+          27,
+          42
+        ]
+      },
+      {
+        "index": 17,
+        "region": [
+          1046,
+          724,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 18,
+        "region": [
+          1077,
+          724,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 19,
+        "region": [
+          1107,
+          724,
+          28,
+          44
+        ]
+      },
+      {
+        "index": 20,
+        "region": [
+          1139,
+          724,
+          26,
+          44
+        ]
+      },
+      {
+        "index": 21,
+        "region": [
+          1170,
+          724,
+          27,
+          45
+        ]
+      },
+      {
+        "index": 22,
+        "region": [
+          1200,
+          724,
+          28,
+          44
+        ]
+      },
+      {
+        "index": 23,
+        "region": [
+          1232,
+          724,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 24,
+        "region": [
+          1262,
+          725,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 25,
+        "region": [
+          1293,
+          725,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 26,
+        "region": [
+          1323,
+          726,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 27,
+        "region": [
+          1354,
+          726,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 28,
+        "region": [
+          1385,
+          725,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 29,
+        "region": [
+          1415,
+          726,
+          29,
+          43
+        ]
+      },
+      {
+        "index": 30,
+        "region": [
+          1447,
+          726,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 31,
+        "region": [
+          1477,
+          727,
+          28,
+          42
+        ]
+      },
+      {
+        "index": 32,
+        "region": [
+          1509,
+          726,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 33,
+        "region": [
+          1539,
+          727,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 34,
+        "region": [
+          1570,
+          727,
+          28,
+          43
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BIRTH_CERTIFICATE_NUMBER",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          522,
+          781,
+          34,
+          38
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          560,
+          781,
+          36,
+          38
+        ]
+      },
+      {
+        "index": 2,
+        "region": [
+          599,
+          781,
+          36,
+          38
+        ]
+      },
+      {
+        "index": 3,
+        "region": [
+          639,
+          780,
+          35,
+          40
+        ]
+      },
+      {
+        "index": 4,
+        "region": [
+          678,
+          780,
+          34,
+          40
+        ]
+      },
+      {
+        "index": 5,
+        "region": [
+          717,
+          781,
+          36,
+          39
+        ]
+      },
+      {
+        "index": 6,
+        "region": [
+          756,
+          781,
+          36,
+          40
+        ]
+      },
+      {
+        "index": 7,
+        "region": [
+          796,
+          781,
+          35,
+          40
+        ]
+      },
+      {
+        "index": 8,
+        "region": [
+          834,
+          781,
+          35,
+          40
+        ]
+      },
+      {
+        "index": 9,
+        "region": [
+          872,
+          782,
+          36,
+          39
+        ]
+      },
+      {
+        "index": 10,
+        "region": [
+          911,
+          782,
+          36,
+          40
+        ]
+      },
+      {
+        "index": 11,
+        "region": [
+          951,
+          782,
+          35,
+          40
+        ]
+      },
+      {
+        "index": 12,
+        "region": [
+          990,
+          782,
+          36,
+          40
+        ]
+      },
+      {
+        "index": 13,
+        "region": [
+          1029,
+          783,
+          36,
+          38
+        ]
+      },
+      {
+        "index": 14,
+        "region": [
+          1069,
+          783,
+          35,
+          39
+        ]
+      },
+      {
+        "index": 15,
+        "region": [
+          1108,
+          783,
+          35,
+          39
+        ]
+      },
+      {
+        "index": 16,
+        "region": [
+          1147,
+          784,
+          35,
+          39
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BIRTH_DATE_DAY",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          521,
+          866,
+          39,
+          26
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          564,
+          866,
+          40,
+          27
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BIRTH_DATE_MONTH",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          607,
+          866,
+          40,
+          27
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          650,
+          866,
+          41,
+          28
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BIRTH_DATE_YEAR",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          694,
+          867,
+          40,
+          26
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          736,
+          866,
+          42,
+          28
+        ]
+      },
+      {
+        "index": 2,
+        "region": [
+          781,
+          868,
+          38,
+          26
+        ]
+      },
+      {
+        "index": 3,
+        "region": [
+          824,
+          867,
+          39,
+          27
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BIRTH_DISTRICT",
+    "type": "OCR_WORD",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          522,
+          913,
+          663,
+          38
+        ]
+      }
+    ]
+  },
+  {
+    "name": "GENDER",
+    "type": "CHECKBOX",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          520,
+          967,
+          101,
+          42
+        ],
+        "entry": "Male",
+        "brightness": 239.8005657708628
+      },
+      {
+        "index": 1,
+        "region": [
+          625,
+          968,
+          101,
+          42
+        ],
+        "entry": "Female",
+        "brightness": 238.2835926449788
+      },
+      {
+        "index": 2,
+        "region": [
+          731,
+          968,
+          101,
+          43
+        ],
+        "entry": "Other",
+        "brightness": 237.79530278609255
+      }
+    ]
+  },
+  {
+    "name": "NATIONALITY_BD",
+    "type": "CHECKBOX",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          521,
+          1028,
+          134,
+          40
+        ],
+        "entry": "Bangladeshi",
+        "brightness": 236.01716417910447
+      }
+    ]
+  },
+  {
+    "name": "NATIONALITY_OTHER",
+    "type": "OCR_WORD",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          861,
+          1030,
+          325,
+          41
+        ]
+      }
+    ]
+  },
+  {
+    "name": "RELIGION",
+    "type": "CHECKBOX",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          520,
+          1086,
+          109,
+          43
+        ],
+        "entry": "Islam",
+        "brightness": 237.84681032643482
+      },
+      {
+        "index": 1,
+        "region": [
+          632,
+          1086,
+          109,
+          43
+        ],
+        "entry": "Hindu",
+        "brightness": 242.2835502453595
+      },
+      {
+        "index": 2,
+        "region": [
+          746,
+          1086,
+          107,
+          44
+        ],
+        "entry": "Bouddha",
+        "brightness": 241.7697536108751
+      },
+      {
+        "index": 3,
+        "region": [
+          858,
+          1087,
+          127,
+          44
+        ],
+        "entry": "Christian",
+        "brightness": 239.90497494631353
+      },
+      {
+        "index": 4,
+        "region": [
+          989,
+          1089,
+          167,
+          42
+        ],
+        "entry": "Not_a_believer",
+        "brightness": 236.38651268890789
+      },
+      {
+        "index": 5,
+        "region": [
+          1161,
+          1089,
+          212,
+          44
+        ],
+        "entry": "Refuse_to_disclose",
+        "brightness": 235.71623070325901
+      },
+      {
+        "index": 6,
+        "region": [
+          1378,
+          1091,
+          123,
+          42
+        ],
+        "entry": "Other",
+        "brightness": 239.99670925280682
+      }
+    ]
+  },
+  {
+    "name": "CLASS",
+    "type": "CHECKBOX",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          520,
+          1145,
+          86,
+          43
+        ],
+        "entry": "6",
+        "brightness": 246.49891833423473
+      },
+      {
+        "index": 1,
+        "region": [
+          609,
+          1146,
+          87,
+          43
+        ],
+        "entry": "7",
+        "brightness": 248.1545041432772
+      },
+      {
+        "index": 2,
+        "region": [
+          700,
+          1145,
+          86,
+          45
+        ],
+        "entry": "8",
+        "brightness": 247.63746770025838
+      },
+      {
+        "index": 3,
+        "region": [
+          791,
+          1146,
+          84,
+          44
+        ],
+        "entry": "9",
+        "brightness": 246.9526515151515
+      },
+      {
+        "index": 4,
+        "region": [
+          880,
+          1146,
+          86,
+          45
+        ],
+        "entry": "10",
+        "brightness": 245.09638242894056
+      },
+      {
+        "index": 5,
+        "region": [
+          970,
+          1147,
+          86,
+          44
+        ],
+        "entry": "11",
+        "brightness": 245.0134778012685
+      },
+      {
+        "index": 6,
+        "region": [
+          1060,
+          1148,
+          87,
+          44
+        ],
+        "entry": "12",
+        "brightness": 245.0253396029258
+      }
+    ]
+  },
+  {
+    "name": "ROLL",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          522,
+          1205,
+          43,
+          41
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          574,
+          1205,
+          45,
+          41
+        ]
+      },
+      {
+        "index": 2,
+        "region": [
+          626,
+          1206,
+          46,
+          40
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MARITAL_STATUS",
+    "type": "CHECKBOX",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          519,
+          1263,
+          129,
+          44
+        ],
+        "entry": "Unmarried",
+        "brightness": 235.2801268498943
+      },
+      {
+        "index": 1,
+        "region": [
+          653,
+          1264,
+          112,
+          43
+        ],
+        "entry": "Married",
+        "brightness": 236.40344684385383
+      },
+      {
+        "index": 2,
+        "region": [
+          769,
+          1264,
+          104,
+          44
+        ],
+        "entry": "Widow",
+        "brightness": 240.02819055944056
+      },
+      {
+        "index": 3,
+        "region": [
+          877,
+          1266,
+          104,
+          43
+        ],
+        "entry": "Bipotnik",
+        "brightness": 232.80299642218247
+      },
+      {
+        "index": 4,
+        "region": [
+          985,
+          1267,
+          215,
+          42
+        ],
+        "entry": "Separated",
+        "brightness": 231.86234772978958
+      },
+      {
+        "index": 5,
+        "region": [
+          1205,
+          1268,
+          130,
+          41
+        ],
+        "entry": "Talak",
+        "brightness": 232.43151969981238
+      },
+      {
+        "index": 6,
+        "region": [
+          1340,
+          1268,
+          161,
+          42
+        ],
+        "entry": "Divorce",
+        "brightness": 233.75702454895003
+      }
+    ]
+  },
+  {
+    "name": "DISABILITY",
+    "type": "CHECKBOX",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          519,
+          1323,
+          160,
+          41
+        ],
+        "entry": "Mute",
+        "brightness": 234.52621951219513
+      },
+      {
+        "index": 1,
+        "region": [
+          683,
+          1323,
+          160,
+          43
+        ],
+        "entry": "Blind",
+        "brightness": 234.3735465116279
+      },
+      {
+        "index": 2,
+        "region": [
+          848,
+          1324,
+          158,
+          44
+        ],
+        "entry": "Deaf",
+        "brightness": 234.4239067894131
+      },
+      {
+        "index": 3,
+        "region": [
+          1012,
+          1325,
+          159,
+          44
+        ],
+        "entry": "Physical Disability",
+        "brightness": 226.6896798170383
+      },
+      {
+        "index": 4,
+        "region": [
+          1176,
+          1326,
+          160,
+          43
+        ],
+        "entry": "Mental disability",
+        "brightness": 228.29709302325583
+      },
+      {
+        "index": 5,
+        "region": [
+          1340,
+          1326,
+          160,
+          45
+        ],
+        "entry": "No disability",
+        "brightness": 238.55847222222224
+      }
+    ]
+  },
+  {
+    "name": "BLOOD_GROUP",
+    "type": "CHECKBOX",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          519,
+          1383,
+          117,
+          42
+        ],
+        "entry": "A+",
+        "brightness": 248.7946682946683
+      },
+      {
+        "index": 1,
+        "region": [
+          642,
+          1382,
+          119,
+          43
+        ],
+        "entry": "A-",
+        "brightness": 249.7908931014266
+      },
+      {
+        "index": 2,
+        "region": [
+          765,
+          1384,
+          118,
+          42
+        ],
+        "entry": "B+",
+        "brightness": 247.02945924132365
+      },
+      {
+        "index": 3,
+        "region": [
+          888,
+          1385,
+          118,
+          43
+        ],
+        "entry": "B-",
+        "brightness": 247.57055577453684
+      },
+      {
+        "index": 4,
+        "region": [
+          1011,
+          1385,
+          119,
+          43
+        ],
+        "entry": "AB+",
+        "brightness": 242.20343951534102
+      },
+      {
+        "index": 5,
+        "region": [
+          1134,
+          1386,
+          119,
+          42
+        ],
+        "entry": "AB-",
+        "brightness": 242.81452581032414
+      },
+      {
+        "index": 6,
+        "region": [
+          1258,
+          1385,
+          119,
+          44
+        ],
+        "entry": "O+",
+        "brightness": 246.7792207792208
+      },
+      {
+        "index": 7,
+        "region": [
+          1381,
+          1386,
+          118,
+          44
+        ],
+        "entry": "O-",
+        "brightness": 247.7925654853621
+      }
+    ]
+  },
+  {
+    "name": "IF_MINORITY",
+    "type": "CHECKBOX",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          518,
+          1442,
+          110,
+          42
+        ],
+        "entry": "Yes",
+        "brightness": 245.52316017316016
+      },
+      {
+        "index": 1,
+        "region": [
+          634,
+          1442,
+          109,
+          43
+        ],
+        "entry": "No",
+        "brightness": 247.59611691913804
+      }
+    ]
+  },
+  {
+    "name": "MINORITY",
+    "type": "CHECKBOX",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          517,
+          1561,
+          103,
+          37
+        ],
+        "entry": "Saotal",
+        "brightness": 228.93466281815796
+      },
+      {
+        "index": 1,
+        "region": [
+          624,
+          1561,
+          82,
+          37
+        ],
+        "entry": "Chakma",
+        "brightness": 230.3882663150956
+      },
+      {
+        "index": 2,
+        "region": [
+          710,
+          1560,
+          74,
+          39
+        ],
+        "entry": "Garo",
+        "brightness": 233.509702009702
+      },
+      {
+        "index": 3,
+        "region": [
+          787,
+          1561,
+          73,
+          39
+        ],
+        "entry": "Hajong",
+        "brightness": 232.61046715841238
+      },
+      {
+        "index": 4,
+        "region": [
+          864,
+          1562,
+          62,
+          38
+        ],
+        "entry": "Chak",
+        "brightness": 234.34295415959252
+      },
+      {
+        "index": 5,
+        "region": [
+          929,
+          1562,
+          68,
+          39
+        ],
+        "entry": "Kuki",
+        "brightness": 228.9238310708899
+      },
+      {
+        "index": 6,
+        "region": [
+          1000,
+          1563,
+          67,
+          38
+        ],
+        "entry": "Kheya",
+        "brightness": 231.5168892380204
+      },
+      {
+        "index": 7,
+        "region": [
+          1071,
+          1563,
+          66,
+          39
+        ],
+        "entry": "Bom",
+        "brightness": 239.87062937062936
+      },
+      {
+        "index": 8,
+        "region": [
+          1142,
+          1564,
+          81,
+          38
+        ],
+        "entry": "Marma",
+        "brightness": 229.59876543209876
+      },
+      {
+        "index": 9,
+        "region": [
+          1227,
+          1564,
+          80,
+          38
+        ],
+        "entry": "Tripura",
+        "brightness": 225.50855263157894
+      },
+      {
+        "index": 10,
+        "region": [
+          1311,
+          1565,
+          88,
+          38
+        ],
+        "entry": "Khasia",
+        "brightness": 227.60257177033492
+      },
+      {
+        "index": 11,
+        "region": [
+          1403,
+          1565,
+          96,
+          38
+        ],
+        "entry": "Monipuri",
+        "brightness": 224.14144736842104
+      },
+      {
+        "index": 12,
+        "region": [
+          1503,
+          1565,
+          90,
+          38
+        ],
+        "entry": "Others",
+        "brightness": 230.03830409356726
+      }
+    ]
+  },
+  {
+    "name": "MOTHERS_NAME",
+    "type": "OCR_WORD",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          516,
+          1660,
+          1077,
+          36
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MOTHERS_NAME_ENG",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          517,
+          1714,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          548,
+          1714,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 2,
+        "region": [
+          579,
+          1713,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 3,
+        "region": [
+          609,
+          1714,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 4,
+        "region": [
+          640,
+          1714,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 5,
+        "region": [
+          672,
+          1714,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 6,
+        "region": [
+          702,
+          1715,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 7,
+        "region": [
+          733,
+          1715,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 8,
+        "region": [
+          764,
+          1715,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 9,
+        "region": [
+          795,
+          1715,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 10,
+        "region": [
+          826,
+          1715,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 11,
+        "region": [
+          857,
+          1716,
+          26,
+          43
+        ]
+      },
+      {
+        "index": 12,
+        "region": [
+          887,
+          1716,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 13,
+        "region": [
+          918,
+          1716,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 14,
+        "region": [
+          948,
+          1716,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 15,
+        "region": [
+          980,
+          1716,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 16,
+        "region": [
+          1011,
+          1716,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 17,
+        "region": [
+          1041,
+          1717,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 18,
+        "region": [
+          1072,
+          1717,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 19,
+        "region": [
+          1104,
+          1717,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 20,
+        "region": [
+          1134,
+          1717,
+          28,
+          44
+        ]
+      },
+      {
+        "index": 21,
+        "region": [
+          1165,
+          1717,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 22,
+        "region": [
+          1196,
+          1717,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 23,
+        "region": [
+          1227,
+          1717,
+          28,
+          45
+        ]
+      },
+      {
+        "index": 24,
+        "region": [
+          1258,
+          1718,
+          28,
+          45
+        ]
+      },
+      {
+        "index": 25,
+        "region": [
+          1289,
+          1718,
+          26,
+          43
+        ]
+      },
+      {
+        "index": 26,
+        "region": [
+          1319,
+          1718,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 27,
+        "region": [
+          1350,
+          1718,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 28,
+        "region": [
+          1381,
+          1719,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 29,
+        "region": [
+          1411,
+          1719,
+          28,
+          44
+        ]
+      },
+      {
+        "index": 30,
+        "region": [
+          1443,
+          1719,
+          27,
+          43
+        ]
+      },
+      {
+        "index": 31,
+        "region": [
+          1473,
+          1719,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 32,
+        "region": [
+          1504,
+          1719,
+          28,
+          43
+        ]
+      },
+      {
+        "index": 33,
+        "region": [
+          1536,
+          1719,
+          27,
+          44
+        ]
+      },
+      {
+        "index": 34,
+        "region": [
+          1566,
+          1719,
+          27,
+          44
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MOTHER_NID",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          516,
+          1772,
+          43,
+          44
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          564,
+          1772,
+          41,
+          43
+        ]
+      },
+      {
+        "index": 2,
+        "region": [
+          610,
+          1772,
+          42,
+          44
+        ]
+      },
+      {
+        "index": 3,
+        "region": [
+          657,
+          1773,
+          41,
+          43
+        ]
+      },
+      {
+        "index": 4,
+        "region": [
+          703,
+          1773,
+          42,
+          43
+        ]
+      },
+      {
+        "index": 5,
+        "region": [
+          749,
+          1773,
+          43,
+          44
+        ]
+      },
+      {
+        "index": 6,
+        "region": [
+          749,
+          1773,
+          43,
+          44
+        ]
+      },
+      {
+        "index": 7,
+        "region": [
+          841,
+          1774,
+          42,
+          43
+        ]
+      },
+      {
+        "index": 8,
+        "region": [
+          889,
+          1775,
+          40,
+          43
+        ]
+      },
+      {
+        "index": 9,
+        "region": [
+          935,
+          1775,
+          41,
+          43
+        ]
+      },
+      {
+        "index": 10,
+        "region": [
+          981,
+          1775,
+          42,
+          44
+        ]
+      },
+      {
+        "index": 11,
+        "region": [
+          1028,
+          1776,
+          41,
+          42
+        ]
+      },
+      {
+        "index": 12,
+        "region": [
+          1073,
+          1775,
+          43,
+          44
+        ]
+      },
+      {
+        "index": 13,
+        "region": [
+          1120,
+          1776,
+          42,
+          43
+        ]
+      },
+      {
+        "index": 14,
+        "region": [
+          1165,
+          1775,
+          44,
+          44
+        ]
+      },
+      {
+        "index": 15,
+        "region": [
+          1213,
+          1775,
+          42,
+          44
+        ]
+      },
+      {
+        "index": 16,
+        "region": [
+          1260,
+          1776,
+          41,
+          44
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MOTHER_BIRTH_DATE_DAY",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          517,
+          1861,
+          39,
+          27
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          560,
+          1861,
+          39,
+          28
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MOTHER_BIRTH_DATE_MONTH",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          603,
+          1860,
+          40,
+          29
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          647,
+          1860,
+          39,
+          29
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MOTHER_BIRTH_DATE_YEAR",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          690,
+          1861,
+          39,
+          29
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          734,
+          1861,
+          39,
+          28
+        ]
+      },
+      {
+        "index": 2,
+        "region": [
+          777,
+          1862,
+          39,
+          28
+        ]
+      },
+      {
+        "index": 3,
+        "region": [
+          820,
+          1862,
+          39,
+          28
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MOTHER_BIRTH_CERTIFICATE",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          516,
+          1905,
+          43,
+          44
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          564,
+          1905,
+          41,
+          43
+        ]
+      },
+      {
+        "index": 2,
+        "region": [
+          610,
+          1905,
+          42,
+          44
+        ]
+      },
+      {
+        "index": 3,
+        "region": [
+          657,
+          1906,
+          41,
+          43
+        ]
+      },
+      {
+        "index": 4,
+        "region": [
+          703,
+          1906,
+          42,
+          43
+        ]
+      },
+      {
+        "index": 5,
+        "region": [
+          749,
+          1906,
+          43,
+          44
+        ]
+      },
+      {
+        "index": 6,
+        "region": [
+          749,
+          1906,
+          43,
+          44
+        ]
+      },
+      {
+        "index": 7,
+        "region": [
+          841,
+          1907,
+          42,
+          43
+        ]
+      },
+      {
+        "index": 8,
+        "region": [
+          889,
+          1908,
+          40,
+          43
+        ]
+      },
+      {
+        "index": 9,
+        "region": [
+          935,
+          1908,
+          41,
+          43
+        ]
+      },
+      {
+        "index": 10,
+        "region": [
+          981,
+          1908,
+          42,
+          44
+        ]
+      },
+      {
+        "index": 11,
+        "region": [
+          1028,
+          1909,
+          41,
+          42
+        ]
+      },
+      {
+        "index": 12,
+        "region": [
+          1073,
+          1908,
+          43,
+          44
+        ]
+      },
+      {
+        "index": 13,
+        "region": [
+          1120,
+          1909,
+          42,
+          43
+        ]
+      },
+      {
+        "index": 14,
+        "region": [
+          1165,
+          1908,
+          44,
+          44
+        ]
+      },
+      {
+        "index": 15,
+        "region": [
+          1213,
+          1908,
+          42,
+          44
+        ]
+      },
+      {
+        "index": 16,
+        "region": [
+          1260,
+          1909,
+          41,
+          44
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MOTHER_MOBILE_NO",
+    "type": "OCR_CHAR",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          515,
+          1962,
+          38,
+          45
+        ]
+      },
+      {
+        "index": 1,
+        "region": [
+          515,
+          1962,
+          38,
+          45
+        ]
+      },
+      {
+        "index": 2,
+        "region": [
+          599,
+          1965,
+          35,
+          42
+        ]
+      },
+      {
+        "index": 3,
+        "region": [
+          639,
+          1965,
+          37,
+          42
+        ]
+      },
+      {
+        "index": 4,
+        "region": [
+          680,
+          1964,
+          37,
+          43
+        ]
+      },
+      {
+        "index": 5,
+        "region": [
+          721,
+          1965,
+          36,
+          43
+        ]
+      },
+      {
+        "index": 6,
+        "region": [
+          762,
+          1965,
+          36,
+          43
+        ]
+      },
+      {
+        "index": 7,
+        "region": [
+          803,
+          1965,
+          36,
+          43
+        ]
+      },
+      {
+        "index": 8,
+        "region": [
+          803,
+          1965,
+          36,
+          43
+        ]
+      },
+      {
+        "index": 9,
+        "region": [
+          883,
+          1966,
+          37,
+          43
+        ]
+      },
+      {
+        "index": 10,
+        "region": [
+          925,
+          1966,
+          36,
+          42
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MOTHER_OCCUPATION",
+    "type": "OCR_WORD",
+    "page_number": "1",
+    "regions": [
+      {
+        "index": 0,
+        "region": [
+          516,
+          2024,
+          784,
+          43
+        ]
+      }
+    ]
+  }
+]
