@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  eiin     BigInt @unique
+  password String
+}
+
+model district {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
+  division_id String   @db.Uuid
+  division    division @relation(fields: [division_id], references: [id])
+}
+
+model division {
+  id       String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name     String
+  district district[]
+}
+
+model pdf {
+  form_id      String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  workspace_id String
+  url          String
+}
+
+model users {
+  id       String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  eiin     BigInt
+  username String @unique
+  password String
+}
+
+model workspace {
+  workspace_id String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name         String  @default("My Workspace")
+  username     String
+  class        Int?
+  section      String?
+  group        String?
+  roll_start   Int?
+  roll_end     Int?
+  total        Int?
+  year         Int?
+  default      Boolean @default(false)
+  description  String?
+}
+
+model form_ocr_output {
+  id        BigInt      @id @default(autoincrement())
+  form_id   String @unique
+  ocr_result Json
+}

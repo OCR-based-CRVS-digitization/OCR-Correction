@@ -1,7 +1,22 @@
 - [ ] install axios, make a request from chatgpt like hello world
 
-- installed npm-tesseract-ocr
-- installed tesseract.js
+- [ ] find an ocr
+    - [ ] ocr should be fast
+    - [ ] ocr detect in a region
+    - [ ] can be specified number or alphabet
+
+
+- [ ] installed npm-tesseract-ocr
+- [x] installed tesseract.js
+- [x] installed prisma
+- [x] checkbox done
+- [ ] image from firebase -> download -> ocr
+- [ ] do page 2 regions
+- [ ] get 4 pages and 4 links for the images from database
+- [ ] get 4 pages and 4 links for the images from database
+
+
+
 
 apparently tesseract.js has bengali trained data too. to access it
 ```
@@ -20,6 +35,8 @@ Choose an Image Annotation Tool: There are several image annotation tools availa
     - found a way to manually get coordinates using [this link](https://pixspy.com/)
     
 
+the image was retreved locally.
+now we can get 1.1.jpg from [this link](https://firebasestorage.googleapis.com/v0/b/test-project-c5de2.appspot.com/o/11_01%3A39%3A36-13-08-2023.jpg?alt=media&token=9527160e-59d1-407b-96db-cd71c2c1da1d)
 
 
 

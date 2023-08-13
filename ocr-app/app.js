@@ -2,12 +2,66 @@ const axios = require('axios');
 const tesseract = require('tesseract.js');
 const Jimp = require('jimp');
 const fs = require('fs');
+const path = require('path');
+const { PrismaClient } = require('@prisma/client');
+
+const prisma = new PrismaClient();
+
 
 const region_file = '../schema/crvs-schema.json'
 const base_image_path = "../form-images/"
-var pdf_id = '1';
 
-async function calculate_average_brightness(imagePath, left, top, width, height) {
+
+
+async function createFormWithOCRResult(form_id, ocr_result) {
+    try{
+        const form = await prisma.form_ocr_output.create({
+            data: {
+                form_id: form_id,
+                ocr_result: ocr_result
+            },
+            // include: {
+            //     ocrResult: true,
+            // },
+        });
+    }
+    catch (error) {
+        console.error('Error:', error);
+    }
+
+    return form;
+}
+
+
+const downloadImage = async(url, folderPath, fileName) => {
+    try {
+        // console.log(url)
+        // console.log(folderPath)
+        // console.log(fileName)
+
+        // Make a GET request to the image URL
+        const response = await axios.get(url, { responseType: 'arraybuffer' });
+        // Ensure the folderPath exists
+        if (!fs.existsSync(folderPath)) {
+            console.log(`Creating directory ${folderPath}`);
+            fs.mkdirSync(folderPath, { recursive: true });
+        }
+
+        
+        // Determine the full path to save the image
+        const imagePath = path.join(folderPath, fileName);
+
+
+        // Write the image data to the specified path
+        fs.writeFileSync(imagePath, Buffer.from(response.data));
+
+        console.log(`Image downloaded and saved to ${imagePath}`);
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+}
+
+const calculate_average_brightness = async (imagePath, left, top, width, height) => {
     try {
         const image = await Jimp.read(imagePath);
         const region = image.clone().crop(left, top, width, height);
@@ -60,7 +114,7 @@ const get_checkbox_input = async (imagePath, regions) => {
         let averageBrightness = await calculate_average_brightness(imagePath, regionInfo.region[0], regionInfo.region[1], regionInfo.region[2], regionInfo.region[3]);
         // console.log("entry : ", regionInfo.entry)
         // console.log("Average brightness : ", averageBrightness)
-        // console.log("Region brightness : ", regionInfo.brightness, "\n")
+        // console.log("brightness without checkmark : ", regionInfo.brightness, "\n")
         if ( regionInfo.brightness - averageBrightness > brightness_threshold) {
             entries.push({
                 entry : regionInfo.entry,
@@ -76,21 +130,40 @@ const get_checkbox_input = async (imagePath, regions) => {
 
 
 async function main() {
+    //initialization
+    var form_output = {}
+    // get image info from firebase
+    var form_id = '1';
+    //each form has 4 pages
+    //we can get the url and page number from firebase's db
+    let imagePaths = []
+    imagePaths.push({
+        url : 'https://firebasestorage.googleapis.com/v0/b/test-project-c5de2.appspot.com/o/11_01%3A39%3A36-13-08-2023.jpg?alt=media&token=9527160e-59d1-407b-96db-cd71c2c1da1d',
+        page_number : 1
+    })
+    
+    //download the image locally
+    for (let imagePath of imagePaths) {
+        await downloadImage(imagePath.url, base_image_path + form_id + "/jpg/", form_id + "." + imagePath.page_number + ".jpg")
+    }
+
     // read json data from region.csv
     var data = fs.readFileSync(region_file, 'utf8');
     var fields = JSON.parse(data)
-    var form_output = {}
+
     // iterate through the fields 
     for (let field of fields) {
-        var imagePath = base_image_path + pdf_id + "/jpg/" + pdf_id + "." + field.page_number + ".jpg";
-        if (field.type == 'OCR_WORD' && field.page_number == '1') {
+        var imagePath = base_image_path + form_id + "/jpg/" + form_id + "." + field.page_number + ".jpg";
+        
+        //TODO figure out if you tell ocr that this is a number
+        // only for first page of the form
+        if (field.type == 'OCR_WORD') {
             let region = field.regions[0].region
-
             let text = await perform_ocr(imagePath, region);
-            form_output[field.name] = text
+            form_output[field.name] = text;
         } else if (field.type == "OCR_CHAR") {
             let text = await ocr_letter_by_letter(imagePath, field.regions);
-            form_output[field.name] = text
+            form_output[field.name] = text;
         } else if (field.type == "CHECKBOX") {
             let entries = await get_checkbox_input(imagePath, field.regions)
             // console.log(entries)
@@ -112,14 +185,14 @@ async function main() {
         }
         console.log("Completed : ", field.name)
     }
+
+    await createFormWithOCRResult(form_id, form_output);
+
     return form_output
 }
-
 
 main().then( (form_output) => {
     console.log(form_output)
 }).catch(error => {
     console.error('Error:', error);
 });
-
-
