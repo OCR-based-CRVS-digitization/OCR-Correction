@@ -5,11 +5,19 @@ const fs = require('fs');
 const path = require('path');
 const { PrismaClient } = require('@prisma/client');
 const correction = require('./correction/correction')
+const express = require('express');
 const prisma = new PrismaClient();
 
 
-const region_file = '../schema/crvs-schema.json'
-const base_image_path = "../form-images/"
+const region_file = '../schema/crvs-schema.json';
+const base_image_path = "../form-images/";
+
+app=express();
+app.use(express.json());
+app.post("/",main)
+
+
+var divisions = getDivision();
 
 
 async function createFormWithOCRResult(form_id, ocr_result) {
@@ -27,6 +35,31 @@ async function createFormWithOCRResult(form_id, ocr_result) {
     }
 }
 
+
+async function getDistricts(division_id) {
+    try{
+            const districts = await prisma.district.findMany({
+            where: {
+                division_id: division_id
+            }
+        });
+        return districts; 
+    }
+    catch (error) {
+        console.error('Error:', error);
+    }   
+}
+
+async function getDivision() {
+    try{
+        const divisions = await prisma.division.findMany();
+        console.log(divisions)
+        return divisions;
+    }
+    catch (error) {
+        console.error('Error:', error);
+    }   
+}
 
 const downloadImage = async(url, folderPath, fileName) => {
     try {
@@ -123,19 +156,24 @@ const get_checkbox_input = async (imagePath, regions) => {
 
 
 
-async function main() {
+async function main(req,res) {
+    //get info from request
     //initialization
     var form_output = {}
     // get image info from firebase
-    var form_id = '2';
+
+    var form_id = req.body.form_id;
     //each form has 4 pages
     //we can get the url and page number from firebase's db
     let imagePaths = []
     imagePaths.push({
-        url : 'https://firebasestorage.googleapis.com/v0/b/test-project-c5de2.appspot.com/o/11_01%3A39%3A36-13-08-2023.jpg?alt=media&token=9527160e-59d1-407b-96db-cd71c2c1da1d',
+        url : req.body.url,
         page_number : 1
     })
     
+    console.log("Form ID : ", form_id)
+    console.log("Image URL : ", imagePaths[0].url)
+
     //download the image locally
     for (let imagePath of imagePaths) {
         await downloadImage(imagePath.url, base_image_path + form_id + "/jpg/", form_id + "." + imagePath.page_number + ".jpg")
@@ -162,17 +200,14 @@ async function main() {
             form_output[field.name] = text;
         } else if (field.type == "CHECKBOX") {
             let entries = await get_checkbox_input(imagePath, field.regions)
-            // console.log(entries)
             if (entries.length == 0) {
                 console.log(field.name,"has no entry");
                 continue;
             }
-
             if (entries.length == 1) {
                 form_output[field.name] = entries[0].entry
                 continue;
             }
-
             // there are multiple checkboxes detected
             form_output[field.name] = []
             for (let entry of entries) {
@@ -182,8 +217,21 @@ async function main() {
         console.log("Completed : ", field.name)
     }
 
-    // await createFormWithOCRResult(form_id, form_output);
 
+    //////////////////////////
+    // get division and district
+    const divisions = await getDivision();
+    for(let division of divisions) {
+        console.log(division.name)
+        const districts = await getDistricts(division.id);
+        division.districts = districts;
+        for(let district of districts) {
+            console.log("\t",district.name)
+        }
+    }
+
+    // await createFormWithOCRResult(form_id, form_output);
+    res.status(200).json({message : "kaj korse mama"})
     return form_output
 }
 
@@ -192,3 +240,6 @@ main().then( (form_output) => {
 }).catch(error => {
     console.error('Error:', error);
 });
+
+
+module.exports = app;
