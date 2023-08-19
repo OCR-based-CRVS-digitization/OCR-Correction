@@ -1,23 +1,23 @@
 const axios = require('axios');
-const tesseract = require('tesseract.js');
+const path = require('path');
+const correction = require('./correction/correction')
+const { createWorker, createScheduler } = require('tesseract.js');
 const Jimp = require('jimp');
 const fs = require('fs');
-const path = require('path');
 const { PrismaClient } = require('@prisma/client');
-const correction = require('./correction/correction')
-const express = require('express');
 const prisma = new PrismaClient();
+const express = require('express');
 
 
-const region_file = '../schema/crvs-schema.json';
-const base_image_path = "../form-images/";
 
 app=express();
 app.use(express.json());
 app.post("/",main)
 
 
-var divisions = getDivision();
+const region_file = '../schema/crvs-schema.json';
+const base_image_path = "../form-images/";
+
 
 
 async function createFormWithOCRResult(form_id, ocr_result) {
@@ -35,31 +35,6 @@ async function createFormWithOCRResult(form_id, ocr_result) {
     }
 }
 
-
-async function getDistricts(division_id) {
-    try{
-            const districts = await prisma.district.findMany({
-            where: {
-                division_id: division_id
-            }
-        });
-        return districts; 
-    }
-    catch (error) {
-        console.error('Error:', error);
-    }   
-}
-
-async function getDivision() {
-    try{
-        const divisions = await prisma.division.findMany();
-        console.log(divisions)
-        return divisions;
-    }
-    catch (error) {
-        console.error('Error:', error);
-    }   
-}
 
 const downloadImage = async(url, folderPath, fileName) => {
     try {
@@ -105,20 +80,36 @@ const calculate_average_brightness = async (imagePath, left, top, width, height)
 }
 
 
-const perform_ocr = async (imagePath, data_type, region) => {
-    const worker = await tesseract.createWorker();
+const perform_ocr = async (imagePath, data_type, region, scheduler) => {
+    const worker = await createWorker();
     await worker.loadLanguage('eng');
     await worker.initialize('eng');
-    if (data_type == 'NUMBER') {
+    if ( data_type == 'NUMBER' ) {
         await worker.setParameters({
             tessedit_char_whitelist: correction.whitelist_numbers
         });
-    } else if (data_type == 'STRING ') {
+    } else if ( data_type == 'STRING' ) {
         await worker.setParameters({
             tessedit_char_whitelist: correction.whitelist_characters
         });
     }
     
+    // console.log("Adding worker to scheduler")
+    // scheduler.addWorker(worker);
+    // console.log("Added worker to scheduler")
+
+    // const results = await Promise.all(Array(1).fill(0).map(() => (
+    //     scheduler.addJob('recognize', imagePath, {
+    //         rectangle: { left: region[0], top: region[1], width: region[2], height: region[3] },
+    //     })
+    // )))
+    
+    // let text = results[0].data.text
+    // const { data: { text } } = await scheduler.addJob('recognize', imagePath, {
+    //     rectangle: { left: region[0], top: region[1], width: region[2], height: region[3] },
+    // });
+    // console.log("Job added to scheduler")
+
     const { data: { text } } = await worker.recognize(imagePath, {
         rectangle: { left: region[0], top: region[1], width: region[2], height: region[3] },
     });
@@ -127,10 +118,10 @@ const perform_ocr = async (imagePath, data_type, region) => {
 };
 
 
-const ocr_letter_by_letter = async(imagePath, data_type, regions) => {
+const ocr_letter_by_letter = async(imagePath, data_type, regions, scheduler) => {
     let text = ""
     for ( let regionInfo of regions) {
-        char = await perform_ocr(imagePath, data_type, regionInfo.region)
+        char = await perform_ocr(imagePath, data_type, regionInfo.region, scheduler)
         char = char.replace(/\n/g, '')
         text += char
     }
@@ -157,15 +148,13 @@ const get_checkbox_input = async (imagePath, regions) => {
 
 
 async function main(req,res) {
-    //get info from request
-    //initialization
     var form_output = {}
-    // get image info from firebase
-
-    var form_id = req.body.form_id;
-    //each form has 4 pages
-    //we can get the url and page number from firebase's db
     let imagePaths = []
+    const scheduler = createScheduler();
+
+    //todo each form has 4 pages
+    //todo we can get the url and page number from firebase's db
+    var form_id = req.body.form_id;
     imagePaths.push({
         url : req.body.url,
         page_number : 1
@@ -185,20 +174,38 @@ async function main(req,res) {
 
     // iterate through the fields 
     for (let field of fields) {
-        var imagePath = base_image_path + form_id + "/jpg/" + form_id + "." + field.page_number + ".jpg";
+        // if(field.type == 'OCR_CHAR')
+        //     continue;
         
-        //TODO figure out if you tell ocr that this is a number
+        var imagePath = base_image_path + form_id + "/jpg/" + form_id + "." + field.page_number + ".jpg";
+        console.log("Processing : ", field.name);
         // only for first page of the form
         if (field.type == 'OCR_WORD') {
+
             let region = field.regions[0].region;
             let data_type = field.data_type;
-            let text = await perform_ocr(imagePath, data_type, region);
-            form_output[field.name] = text;
+            let ocr_text = await perform_ocr(imagePath, data_type, region, scheduler);
+            
+            let suggestions = await correction.getSuggestions(ocr_text, field.correction);
+            form_output[field.name] = {
+                text : ocr_text,
+                suggestions : suggestions
+            };
+
         } else if (field.type == "OCR_CHAR") {
+
             let data_type = field.data_type;
-            let text = await ocr_letter_by_letter(imagePath, data_type, field.regions);
-            form_output[field.name] = text;
+            let ocr_text = await ocr_letter_by_letter(imagePath, data_type, field.regions, scheduler);
+            let suggestions = await correction.getSuggestions(ocr_text, field.correction);
+            form_output[field.name] = {
+                text : ocr_text,
+                suggestions : suggestions
+            };
+
+
         } else if (field.type == "CHECKBOX") {
+
+
             let entries = await get_checkbox_input(imagePath, field.regions)
             if (entries.length == 0) {
                 console.log(field.name,"has no entry");
@@ -213,33 +220,38 @@ async function main(req,res) {
             for (let entry of entries) {
                 form_output[field.name].push(entry.entry)
             }
+
+
         }
         console.log("Completed : ", field.name)
+        scheduler.terminate();
     }
 
 
     //////////////////////////
     // get division and district
-    const divisions = await getDivision();
-    for(let division of divisions) {
-        console.log(division.name)
-        const districts = await getDistricts(division.id);
-        division.districts = districts;
-        for(let district of districts) {
-            console.log("\t",district.name)
-        }
-    }
+    // const divisions = await getDivision();
+    // for(let division of divisions) {
+    //     console.log(division.name)
+    //     const districts = await getDistrictsInDivision(division.id);
+    //     division.districts = districts;
+    //     for(let district of districts) {
+    //         console.log("\t",district.name)
+    //     }
+    // }
 
-    // await createFormWithOCRResult(form_id, form_output);
+    await createFormWithOCRResult(form_id, form_output);
     res.status(200).json({message : "kaj korse mama"})
+    console.log(form_output)
+    // console.log("Completed ocr. sending for correction")
     return form_output
 }
 
-main().then( (form_output) => {
-    console.log(form_output)
-}).catch(error => {
-    console.error('Error:', error);
-});
+// main().then( (form_output) => {
+//     console.log(form_output)
+// }).catch(error => {
+//     console.error('Error:', error);
+// });
 
 
 module.exports = app;

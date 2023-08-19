@@ -4,6 +4,10 @@
     "type": "OCR_WORD",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -21,6 +25,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -344,6 +352,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -505,6 +517,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "DATE",
+      "details": "DAY"
+    },
     "regions": [
       {
         "index": 0,
@@ -531,6 +547,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "DATE",
+      "details": "MONTH"
+    },
     "regions": [
       {
         "index": 0,
@@ -557,6 +577,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "DATE",
+      "details": "YEAR"
+    },
     "regions": [
       {
         "index": 0,
@@ -601,6 +625,10 @@
     "type": "OCR_WORD",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "EDIT",
+      "details": "DISTRICT"
+    },
     "regions": [
       {
         "index": 0,
@@ -618,6 +646,10 @@
     "type": "CHECKBOX",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -659,6 +691,10 @@
     "type": "CHECKBOX",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -678,6 +714,10 @@
     "type": "OCR_WORD",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -695,6 +735,10 @@
     "type": "CHECKBOX",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -780,6 +824,10 @@
     "type": "CHECKBOX",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -865,6 +913,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "DIGIT",
+      "details": "3"
+    },
     "regions": [
       {
         "index": 0,
@@ -900,6 +952,10 @@
     "type": "CHECKBOX",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -985,6 +1041,10 @@
     "type": "CHECKBOX",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -1059,6 +1119,10 @@
     "type": "CHECKBOX",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -1155,6 +1219,10 @@
     "type": "CHECKBOX",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -1185,6 +1253,10 @@
     "type": "CHECKBOX",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -1336,6 +1408,10 @@
     "type": "OCR_WORD",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -1353,6 +1429,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,
@@ -1676,6 +1756,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "DIGIT",
+      "details": "17"
+    },
     "regions": [
       {
         "index": 0,
@@ -1837,6 +1921,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "DATE",
+      "details": "DAY"
+    },
     "regions": [
       {
         "index": 0,
@@ -1863,6 +1951,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "DATE",
+      "details": "MONTH"
+    },
     "regions": [
       {
         "index": 0,
@@ -1889,6 +1981,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "DATE",
+      "details": "YEAR"
+    },
     "regions": [
       {
         "index": 0,
@@ -1933,6 +2029,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "DIGIT",
+      "details": "17"
+    },
     "regions": [
       {
         "index": 0,
@@ -2094,6 +2194,10 @@
     "type": "OCR_CHAR",
     "page_number": "1",
     "data_type": "NUMBER",
+    "correction": {
+      "type": "DIGIT",
+      "details": "11"
+    },
     "regions": [
       {
         "index": 0,
@@ -2201,6 +2305,10 @@
     "type": "OCR_WORD",
     "page_number": "1",
     "data_type": "STRING",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    },
     "regions": [
       {
         "index": 0,

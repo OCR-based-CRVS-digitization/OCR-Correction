@@ -56,3 +56,16 @@ Each option has a region, an entry ( the name of the option ) and a brightness v
 ## how checkbox is being verified
 we have save the `average brightness` of the checkbox entries. and we calculate the brightness of the input.
 if the input brightness is less than the average brightness, then we consider it as `checked` else `unchecked`
+
+
+# whitelist numbers and strings
+set the tesseract ocr to only detect numbers or strings depending on the field. numbers are working, strings are not working yet.
+
+# Scheduler to run the ocr in parallel
+
+### NEEDED TO SPECIFY WHAT KIND OF CORRECTION WE WILL DO
+DATE DAY
+DATE MONTH
+DATE YEAR
+DISTRICT EDIT
+NONE
