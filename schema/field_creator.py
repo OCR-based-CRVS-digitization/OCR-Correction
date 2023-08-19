@@ -91,6 +91,7 @@ def new_field_creator(file, json_file):
                 field_name = fragments[0]
                 field_type = fragments[1]
                 page_number = fragments[2]
+                data_type = fragments[3]
                 regions = []
                 index = 0
             elif line == '\n':
@@ -98,6 +99,7 @@ def new_field_creator(file, json_file):
                     "name": field_name,
                     "type": field_type,
                     "page_number": page_number,
+                    "data_type": data_type,
                     "regions": regions
                 })
             else :

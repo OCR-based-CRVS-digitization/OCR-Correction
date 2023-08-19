@@ -3,6 +3,7 @@
     "name": "STUDENT_NAME",
     "type": "OCR_WORD",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -19,6 +20,7 @@
     "name": "STUDENT_NAME_ENGLISH",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -341,6 +343,7 @@
     "name": "BIRTH_CERTIFICATE_NUMBER",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -501,6 +504,7 @@
     "name": "BIRTH_DATE_DAY",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -526,6 +530,7 @@
     "name": "BIRTH_DATE_MONTH",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -551,6 +556,7 @@
     "name": "BIRTH_DATE_YEAR",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -594,6 +600,7 @@
     "name": "BIRTH_DISTRICT",
     "type": "OCR_WORD",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -610,6 +617,7 @@
     "name": "GENDER",
     "type": "CHECKBOX",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -650,6 +658,7 @@
     "name": "NATIONALITY_BD",
     "type": "CHECKBOX",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -668,6 +677,7 @@
     "name": "NATIONALITY_OTHER",
     "type": "OCR_WORD",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -684,6 +694,7 @@
     "name": "RELIGION",
     "type": "CHECKBOX",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -768,6 +779,7 @@
     "name": "CLASS",
     "type": "CHECKBOX",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -852,6 +864,7 @@
     "name": "ROLL",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -886,6 +899,7 @@
     "name": "MARITAL_STATUS",
     "type": "CHECKBOX",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -970,6 +984,7 @@
     "name": "DISABILITY",
     "type": "CHECKBOX",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -1043,6 +1058,7 @@
     "name": "BLOOD_GROUP",
     "type": "CHECKBOX",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -1138,6 +1154,7 @@
     "name": "IF_MINORITY",
     "type": "CHECKBOX",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -1167,6 +1184,7 @@
     "name": "MINORITY",
     "type": "CHECKBOX",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -1317,6 +1335,7 @@
     "name": "MOTHERS_NAME",
     "type": "OCR_WORD",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -1333,6 +1352,7 @@
     "name": "MOTHERS_NAME_ENG",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,
@@ -1655,6 +1675,7 @@
     "name": "MOTHER_NID",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -1815,6 +1836,7 @@
     "name": "MOTHER_BIRTH_DATE_DAY",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -1840,6 +1862,7 @@
     "name": "MOTHER_BIRTH_DATE_MONTH",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -1865,6 +1888,7 @@
     "name": "MOTHER_BIRTH_DATE_YEAR",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -1908,6 +1932,7 @@
     "name": "MOTHER_BIRTH_CERTIFICATE",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -2068,6 +2093,7 @@
     "name": "MOTHER_MOBILE_NO",
     "type": "OCR_CHAR",
     "page_number": "1",
+    "data_type": "NUMBER",
     "regions": [
       {
         "index": 0,
@@ -2174,6 +2200,7 @@
     "name": "MOTHER_OCCUPATION",
     "type": "OCR_WORD",
     "page_number": "1",
+    "data_type": "STRING",
     "regions": [
       {
         "index": 0,

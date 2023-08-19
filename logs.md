@@ -1,6 +1,6 @@
 - [ ] install axios, make a request from chatgpt like hello world
 
-- [ ] find an ocr
+- [ ] find an ocr - [tesseract.js]  [google cloud api]
     - [ ] ocr should be fast
     - [ ] ocr detect in a region
     - [ ] can be specified number or alphabet
