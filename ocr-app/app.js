@@ -245,7 +245,7 @@ async function main(req,res) {
     // }
 
     await createFormWithOCRResult(form_id, form_output);
-    res.status(200).json({message : "kaj korse mama"})
+    res.status(200).json(form_output)
     console.log(form_output)
     // console.log("Completed ocr. sending for correction")
     return form_output
