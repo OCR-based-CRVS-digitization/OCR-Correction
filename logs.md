@@ -1,19 +1,28 @@
-- [ ] install axios, make a request from chatgpt like hello world
 
-- [ ] find an ocr - [tesseract.js]  [google cloud api]
-    - [ ] ocr should be fast
-    - [ ] ocr detect in a region
-    - [ ] can be specified number or alphabet
+- [x] find an ocr - [`tesseract.js`]  [`google cloud api`]
+    - [x] ocr should be fast
+    - [x] ocr detect in a region
+    - [x] can be specified number or alphabet
+- [ ] find the documentation of `google cloud api`
+    - [ ] how to specify region
+    - [ ] how to specify number or alphabet
+    - [x] can detect bangla
+    - [x] very fast
 
 
-- [ ] installed npm-tesseract-ocr
-- [x] installed tesseract.js
-- [x] installed prisma
-- [x] checkbox done
-- [ ] image from firebase -> download -> ocr
+- [ ] checkbox multiple error
+- [ ] if pdf uploaded, then do pdf to jpg [without quality loss] and get page numbers from the output 
+- [ ] do more pdf writing
+- [ ] use scanner instead of camscanner
+    - [ ] scanner output rotate and translate before sending to ocr 
 - [ ] do page 2 regions
 - [ ] get 4 pages and 4 links for the images from database
-- [ ] get 4 pages and 4 links for the images from database
+- [ ] get user feedback
+
+- [x] installed tesseract.js
+- [x] installed prisma
+- [x] image from firebase -> download -> ocr
+- [ ] 
 
 
 
@@ -35,7 +44,7 @@ Choose an Image Annotation Tool: There are several image annotation tools availa
     - found a way to manually get coordinates using [this link](https://pixspy.com/)
     
 
-the image was retreved locally.
+- [ ] the image was retreved locally.
 now we can get 1.1.jpg from [this link](https://firebasestorage.googleapis.com/v0/b/test-project-c5de2.appspot.com/o/11_01%3A39%3A36-13-08-2023.jpg?alt=media&token=9527160e-59d1-407b-96db-cd71c2c1da1d)
 
 
