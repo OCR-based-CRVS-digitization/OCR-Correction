@@ -64,8 +64,8 @@ set the tesseract ocr to only detect numbers or strings depending on the field. 
 # Scheduler to run the ocr in parallel
 
 ### NEEDED TO SPECIFY WHAT KIND OF CORRECTION WE WILL DO
-DATE DAY
-DATE MONTH
-DATE YEAR
-DISTRICT EDIT
-NONE
+DATE:DAY
+DATE:MONTH
+DATE:YEAR
+EDIT:DISTRICT
+NONE:

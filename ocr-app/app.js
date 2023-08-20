@@ -187,8 +187,10 @@ async function main(req,res) {
             let ocr_text = await perform_ocr(imagePath, data_type, region, scheduler);
             
             let suggestions = await correction.getSuggestions(ocr_text, field.correction);
+            let correction_needed = suggestions.length > 0;
             form_output[field.name] = {
                 text : ocr_text,
+                correction_needed : correction_needed,
                 suggestions : suggestions
             };
 
@@ -197,8 +199,10 @@ async function main(req,res) {
             let data_type = field.data_type;
             let ocr_text = await ocr_letter_by_letter(imagePath, data_type, field.regions, scheduler);
             let suggestions = await correction.getSuggestions(ocr_text, field.correction);
+            let correction_needed = suggestions.length > 0;
             form_output[field.name] = {
                 text : ocr_text,
+                correction_needed : correction_needed,
                 suggestions : suggestions
             };
 

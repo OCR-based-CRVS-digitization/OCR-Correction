@@ -12,6 +12,8 @@ async function getSuggestions(text, correction) {
     let correction_details = correction.details;
     let suggestions = [];
 
+    
+
     if(correction_type == 'EDIT') {
         if(correction_details == 'DISTRICT') {
             let districtRows = await correctiondb.getDistricts();
@@ -30,6 +32,23 @@ async function getSuggestions(text, correction) {
             }
             if (min == 0)
                 return [];
+        }
+    }
+    else if(correction_type == 'DIGIT') {
+        let number_length = parseInt(correction_details);
+        if (text.length != number_length) {
+            suggestions.push("Number length should be " + number_length);
+        }
+        // check if all character of text is digit
+        let isDigit = true;
+        for(let i = 0; i < text.length; i++) {
+            if(!whitelist_numbers.includes(text[i])) {
+                isDigit = false;
+                break;
+            }
+        }
+        if(!isDigit) {
+            suggestions.push("All characters should be digits");
         }
     }
 
