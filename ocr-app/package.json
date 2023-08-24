@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "apt install tesseract-ocr && npx prisma generate && node index.js"
+    "render": "apt install tesseract-ocr && npx prisma generate && node index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",

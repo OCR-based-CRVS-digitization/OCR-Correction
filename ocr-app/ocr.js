@@ -38,12 +38,16 @@ async function createFormWithOCRResult(form_id, ocr_result) {
 
 const downloadImage = async(url, folderPath, fileName) => {
     try {
+        // Make a GET request to the image URL
         const response = await axios.get(url, { responseType: 'arraybuffer' });
+        // Ensure the folderPath exists
         if (!fs.existsSync(folderPath)) {
             console.log(`Creating directory ${folderPath}`);
             fs.mkdirSync(folderPath, { recursive: true });
         }        
+        // Determine the full path to save the image
         const imagePath = path.join(folderPath, fileName);
+        // Write the image data to the specified path
         fs.writeFileSync(imagePath, Buffer.from(response.data));
 
         console.log(`Image downloaded and saved to ${imagePath}`);
@@ -52,8 +56,9 @@ const downloadImage = async(url, folderPath, fileName) => {
     }
 }
 
-const calculate_average_brightness = async (image, left, top, width, height) => {
+const calculate_average_brightness = async (imagePath, left, top, width, height) => {
     try {
+        const image = await Jimp.read(imagePath);
         const region = image.clone().crop(left, top, width, height);
 
         let totalBrightness = 0;
@@ -167,20 +172,13 @@ async function main(req,res) {
     var data = fs.readFileSync(region_file, 'utf8');
     var fields = JSON.parse(data)
 
-    // needed for checkbox input. the 0th element is a dummy placeholder
-    const images = [
-        'dummy',
-        await Jimp.read(base_image_path + form_id + "/jpg/" + form_id + ".1.jpg"),
-        await Jimp.read(base_image_path + form_id + "/jpg/" + form_id + ".2.jpg")
-    ]
-
     for (let field of fields) {
         if(field.type == 'OCR_CHAR')
             continue;
         
         var imagePath = base_image_path + form_id + "/jpg/" + form_id + "." + field.page_number + ".jpg";
         console.log("Processing : ", field.name);
-
+        // only for first page of the form
         if (field.type == 'OCR_WORD') {
             let region = field.regions[0].region;
             let data_type = field.data_type;
@@ -208,7 +206,9 @@ async function main(req,res) {
 
 
         } else if (field.type == "CHECKBOX") {
-            let entries = await get_checkbox_input(images[field.page_number], field.regions)
+
+
+            let entries = await get_checkbox_input(imagePath, field.regions)
             if (entries.length == 0) {
                 console.log(field.name,"has no entry");
                 continue;
