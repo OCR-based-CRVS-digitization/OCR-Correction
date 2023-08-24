@@ -1,5 +1,6 @@
 
 const correctiondb = require('../db-query/correction-db');
+const utils = require('./correction-utils.js');
 
 whitelist_numbers = '0123456789'
 whitelist_characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ().,;:\'\"'
@@ -11,76 +12,64 @@ async function getSuggestions(text, correction) {
     let correction_type = correction.type;
     let correction_details = correction.details;
     let suggestions = [];
+    let errors = [];
 
-    
-
-    if(correction_type == 'EDIT') {
-        if(correction_details == 'DISTRICT') {
-            let districtRows = await correctiondb.getDistricts();
-
-            let min = 1000;
-            for(let districtRow of districtRows) {
-                let distance = editDistance(text, districtRow.name);
-                if(min == 1000 || distance < min) {
-                    min = distance;
-                    suggestions = []
-                    suggestions.push(districtRow.name);
+    switch(correction_type) {
+        case 'EDIT':
+            if (correction_details == 'DISTRICT') {
+                let districtRows = await correctiondb.getDistricts();
+                let min = 1000;
+                for (let districtRow of districtRows) {
+                    let distance = utils.editDistance(text, districtRow.name);
+                    if (min == 1000 || distance < min) {
+                        min = distance;
+                        suggestions = []
+                        suggestions.push(districtRow.name);
+                    }
+                    else if (distance == min) {
+                        suggestions.push(districtRow.name);
+                    }
                 }
-                else if(distance == min) {
-                    suggestions.push(districtRow.name);
+                if (min == 0)
+                    return {suggestions, errors};
+            }
+            break;
+
+        case 'DIGIT':
+            let number_length = parseInt(correction_details);
+            if (text.length != number_length) {
+                errors.push("Number length should be " + number_length);
+            }
+            if (!utils.text_is_number(text)) {
+                errors.push("Number should only contain digits");
+            }
+            break;
+
+        case 'DATE':
+            if (correction_details == 'DAY') {
+                if (!utils.text_is_valid_day(text)) {
+                    errors.push("Invalid day");
+                }
+            } else if (correction_details == 'MONTH') {
+                if (!utils.text_is_valid_month(text)) {
+                    errors.push("Invalid month");
+                }
+            } else if (correction_details == 'YEAR') {
+                if (!utils.text_is_valid_year(text)) {
+                    errors.push("Invalid year");
                 }
             }
-            if (min == 0)
-                return [];
-        }
+            break;
+        case 'NONE':
+            break;
+        default:
+            console.log("Invalid correction type");
+            break;
     }
-    else if(correction_type == 'DIGIT') {
-        let number_length = parseInt(correction_details);
-        if (text.length != number_length) {
-            suggestions.push("Number length should be " + number_length);
-        }
-        // check if all character of text is digit
-        let isDigit = true;
-        for(let i = 0; i < text.length; i++) {
-            if(!whitelist_numbers.includes(text[i])) {
-                isDigit = false;
-                break;
-            }
-        }
-        if(!isDigit) {
-            suggestions.push("All characters should be digits");
-        }
-    }
-
-    return suggestions;
+    return {suggestions, errors};
 }
 
-function editDistance(str1, str2) {
-    const m = str1.length;
-    const n = str2.length;
 
-    const dp = Array.from({ length: m + 1 }, (_, i) => Array(n + 1).fill(0));
-
-    for (let i = 0; i <= m; i++) {
-        dp[i][0] = i;
-    }
-
-    for (let j = 0; j <= n; j++) {
-        dp[0][j] = j;
-    }
-
-    for (let i = 1; i <= m; i++) {
-        for (let j = 1; j <= n; j++) {
-            if (str1[i - 1] === str2[j - 1]) {
-                dp[i][j] = dp[i - 1][j - 1];
-            } else {
-                dp[i][j] = Math.min(dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j]) + 1;
-            }
-        }
-    }
-
-    return dp[m][n];
-}
 
 
 module.exports = {

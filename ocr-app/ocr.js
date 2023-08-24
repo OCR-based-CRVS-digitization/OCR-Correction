@@ -173,8 +173,8 @@ async function main(req,res) {
     var fields = JSON.parse(data)
 
     for (let field of fields) {
-        if(field.type == 'OCR_CHAR')
-            continue;
+        // if(field.type == 'OCR_CHAR')
+        //     continue;
         
         var imagePath = base_image_path + form_id + "/jpg/" + form_id + "." + field.page_number + ".jpg";
         console.log("Processing : ", field.name);
@@ -184,45 +184,47 @@ async function main(req,res) {
             let data_type = field.data_type;
             let ocr_text = await perform_ocr(imagePath, data_type, region, scheduler);
             
-            let suggestions = await correction.getSuggestions(ocr_text, field.correction);
-            let correction_needed = suggestions.length > 0;
+            let {suggestions, errors} = await correction.getSuggestions(ocr_text, field.correction);
+            let correction_needed = suggestions.length > 0 || errors.length > 0;
             form_output[field.name] = {
                 text : ocr_text,
                 correction_needed,
-                suggestions
+                suggestions,
+                errors
             };
 
         } else if (field.type == "OCR_CHAR") {
 
             let data_type = field.data_type;
             let ocr_text = await ocr_letter_by_letter(imagePath, data_type, field.regions, scheduler);
-            let suggestions = await correction.getSuggestions(ocr_text, field.correction);
-            let correction_needed = suggestions.length > 0;
+            let { suggestions, errors } = await correction.getSuggestions(ocr_text, field.correction);
+            let correction_needed = suggestions.length > 0 || errors.length > 0;
             form_output[field.name] = {
                 text : ocr_text,
                 correction_needed,
-                suggestions
+                suggestions,
+                errors
             };
 
 
         } else if (field.type == "CHECKBOX") {
-
-
             let entries = await get_checkbox_input(imagePath, field.regions)
+            let text;
+            let errors = [];
             if (entries.length == 0) {
                 console.log(field.name,"has no entry");
                 continue;
             }
-            if (entries.length == 1) {
-                form_output[field.name] = entries[0].entry
-                continue;
+            if (entries.length > 1) {
+                errors.push("More than one entry found");
             }
-            // there are multiple checkboxes detected
-            form_output[field.name] = []
-            for (let entry of entries) {
-                form_output[field.name].push(entry.entry)
+            entries.length > 0 ? text = entries[0].entry : text = entries;
+            form_output[field.name] = {
+                text,
+                correction_needed : entries.length > 1,
+                suggestions : [],
+                errors
             }
-
 
         }
         console.log("Completed : ", field.name)

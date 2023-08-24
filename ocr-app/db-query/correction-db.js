@@ -19,7 +19,6 @@ async function getDistrictsInDivision(division_id) {
 async function getDistricts() {
     try {
         const districts = await prisma.district.findMany();
-        console.log(districts)
         return districts;
     }
     catch (error) {
