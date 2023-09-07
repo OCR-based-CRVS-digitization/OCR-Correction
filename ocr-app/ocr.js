@@ -231,8 +231,7 @@ async function main(req,res) {
         scheduler.terminate();
     }
 
-
-    // await createFormWithOCRResult(form_id, form_output);
+    await createFormWithOCRResult(form_id, form_output);
     res.status(200).json(form_output)
     console.log(form_output)
     return form_output

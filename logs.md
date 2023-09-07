@@ -15,7 +15,7 @@
 - [ ] do more pdf writing
 - [ ] use scanner instead of camscanner
     - [ ] scanner output rotate and translate before sending to ocr 
-- [ ] do page 2 regions
+- [x] do page 2 regions
 - [ ] get 4 pages and 4 links for the images from database
 - [ ] get user feedback
 
@@ -45,7 +45,8 @@ Choose an Image Annotation Tool: There are several image annotation tools availa
     
 
 - [ ] the image was retreved locally.
-now we can get 1.1.jpg from [this link](https://firebasestorage.googleapis.com/v0/b/test-project-c5de2.appspot.com/o/11_01%3A39%3A36-13-08-2023.jpg?alt=media&token=9527160e-59d1-407b-96db-cd71c2c1da1d)
+- [ ] get 1.1.jpg from firebase [this link](https://firebasestorage.googleapis.com/v0/b/test-project-c5de2.appspot.com/o/11_01%3A39%3A36-13-08-2023.jpg?alt=media&token=9527160e-59d1-407b-96db-cd71c2c1da1d)
+- [ ] get the image link from req.body.url
 
 
 
@@ -76,5 +77,13 @@ set the tesseract ocr to only detect numbers or strings depending on the field. 
 DATE:DAY
 DATE:MONTH
 DATE:YEAR
+EDIT:DIVISION
 EDIT:DISTRICT
+EDIT:UPAZILLA_THANA
+EDIT:CITYCORPORATION_POURASHOVA
+EDIT:UNION
+EDIT:WARDNUMBER
+EDIT:MOUJA
+EDIT:VILLAGE_MOHOLLA
+EDIT:POST_OFFICE
 NONE:
