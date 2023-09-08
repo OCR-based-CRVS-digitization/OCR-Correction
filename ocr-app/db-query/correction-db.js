@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 async function getDistrictsInDivision(division_id) {
     try {
-        const districts = await prisma.district.findMany({
+        const districts = await prisma.correction_district.findMany({
             where: {
                 division_id: division_id
             }
@@ -18,7 +18,7 @@ async function getDistrictsInDivision(division_id) {
 
 async function getDistricts() {
     try {
-        const districts = await prisma.district.findMany();
+        const districts = await prisma.correction_district.findMany();
         return districts;
     }
     catch (error) {
@@ -30,7 +30,7 @@ async function getDistricts() {
 
 async function getDivisions() {
     try {
-        const divisions = await prisma.division.findMany();
+        const divisions = await prisma.correction_division.findMany();
         console.log(divisions)
         return divisions;
     }
@@ -39,8 +39,20 @@ async function getDivisions() {
     }
 }
 
+async function getUpazillas() {
+    try {
+        const upazilla = await prisma.correction_upazilla.findMany();
+        return upazilla;
+    }
+    catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+
 module.exports = {
     getDistrictsInDivision,
     getDistricts,
-    getDivisions
+    getDivisions,
+    getUpazillas,
 }

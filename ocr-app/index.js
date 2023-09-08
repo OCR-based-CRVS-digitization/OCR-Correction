@@ -1,6 +1,6 @@
 require('dotenv').config();
 const PORT = process.env.PORT;
-const ocr = require('./ocr');
+const ocr = require('./ocr/ocr');
 
 (async () => {
 

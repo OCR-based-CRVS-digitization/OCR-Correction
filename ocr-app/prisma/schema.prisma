@@ -13,17 +13,61 @@ model admin {
   password String
 }
 
-model district {
+model correction_division {
+  id       String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name     String
+  district correction_district[]
+}
+
+model correction_district {
   id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name        String
   division_id String   @db.Uuid
-  division    division @relation(fields: [division_id], references: [id])
+  division    correction_division @relation(fields: [division_id], references: [id])
+  upazilla    correction_upazilla[]
+  thana       correction_thana[]
+  citycorporation correction_citycorporation[]
+  paurashava  correction_paurashava[]
+  postoffice  correction_postoffice[]
 }
 
-model division {
-  id       String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name     String
-  district district[]
+
+model correction_upazilla {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
+  district_id String   @db.Uuid
+  district    correction_district @relation(fields: [district_id], references: [id])
+}
+
+model correction_thana {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
+  district_id String   @db.Uuid
+  district    correction_district @relation(fields: [district_id], references: [id])
+}
+
+model correction_citycorporation {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
+  max_wardnumber    Int
+  district_id String   @db.Uuid
+  district    correction_district @relation(fields: [district_id], references: [id])
+}
+
+model correction_paurashava {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
+  max_wardnumber    Int
+  district_id String   @db.Uuid
+  district    correction_district @relation(fields: [district_id], references: [id])
+}
+
+model correction_postoffice {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
+  post_code   Int
+  district_id String   @db.Uuid
+  district    correction_district @relation(fields: [district_id], references: [id])
 }
 
 model pdf {
@@ -57,5 +101,26 @@ model workspace {
 model form_ocr_output {
   id        BigInt      @id @default(autoincrement())
   form_id   String @unique
+  workspace_id String
+  eiin      String
   ocr_result Json
+  created_at DateTime @default(now())
+}
+
+model form_draft {
+  id        BigInt      @id @default(autoincrement())
+  form_id   String @unique
+  workspace_id String
+  eiin      String
+  draft     Json
+  created_at DateTime @default(now())
+}
+
+model form_validated {
+  id        BigInt      @id @default(autoincrement())
+  form_id   String @unique
+  workspace_id String
+  eiin      String
+  validated Json
+  created_at DateTime @default(now())
 }

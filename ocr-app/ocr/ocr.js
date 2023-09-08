@@ -1,6 +1,6 @@
 const axios = require('axios');
 const path = require('path');
-const correction = require('./correction/correction')
+const correction = require('../correction/correction')
 const { createWorker, createScheduler } = require('tesseract.js');
 const Jimp = require('jimp');
 const fs = require('fs');
@@ -15,25 +15,9 @@ app.use(express.json());
 app.post("/",main)
 
 
-const region_file = '../schema/crvs-schema.json';
+const crvs_schema_file = '../schema/crvs-schema.json';
 const base_image_path = "../form-images/";
-
-
-
-async function createFormWithOCRResult(form_id, ocr_result) {
-    try{
-        const form = await prisma.form_ocr_output.create({
-            data: {
-                form_id: form_id,
-                ocr_result: ocr_result
-            },
-        });
-        return form;
-    }
-    catch (error) {
-        console.error('Error:', error);
-    }
-}
+const base_ocr_output_path = "ocr/ocr_output/";
 
 
 const downloadImage = async(url, folderPath, fileName) => {
@@ -79,6 +63,20 @@ const calculate_average_brightness = async (imagePath, left, top, width, height)
     }
 }
 
+async function createFormWithOCRResult(form_id, ocr_result) {
+    try{
+        const form = await prisma.form_ocr_output.create({
+            data: {
+                form_id: form_id,
+                ocr_result: ocr_result
+            },
+        });
+        return form;
+    }
+    catch (error) {
+        console.error('Error:', error);
+    }
+}
 
 const perform_ocr = async (imagePath, data_type, region, scheduler) => {
     const worker = await createWorker();
@@ -148,100 +146,98 @@ const get_checkbox_input = async (imagePath, regions) => {
 
 
 async function main(req,res) {
-    var form_output = {}
+    
+    var ocr_output = []
     let imagePaths = []
     const scheduler = createScheduler();
 
-    // //todo each form has 4 pages
-    // //todo we can get the url and page number from firebase's db
-    // var form_id = req.body.form_id;
-    // imagePaths.push({
-    //     url : req.body.url,
-    //     page_number : 1
-    // })
-    // //download the image locally
-    // for (let imagePath of imagePaths) {
-    //     await downloadImage(imagePath.url, base_image_path + form_id + "/jpg/", form_id + "." + imagePath.page_number + ".jpg")
+    // // //todo each form has 4 pages
+    // // //todo we can get the url and page number from firebase's db
+    // // var form_id = req.body.form_id;
+    // // imagePaths.push({
+    // //     url : req.body.url,
+    // //     page_number : 1
+    // // })
+    // // //download the image locally
+    // // for (let imagePath of imagePaths) {
+    // //     await downloadImage(imagePath.url, base_image_path + form_id + "/jpg/", form_id + "." + imagePath.page_number + ".jpg")
+    // // }
+
+    // // get pdf from firebase and divide it into pages with page numbers as the name
+
+    let form_id = '2';
+    // // console.log("Form ID : ", form_id)
+    // // console.log("Image URL : ", imagePaths[0].url)
+
+    // // read json data from crvs-schema.json
+    // var data = fs.readFileSync(crvs_schema_file, 'utf8');
+    // var fields = JSON.parse(data)
+
+    // for (let field of fields) {
+    //     // if(field.type == 'OCR_CHAR' || field.type == 'OCR_WORD')
+    //     //     continue;
+        
+    //     var imagePath = base_image_path + form_id + "/jpg/" + form_id + "." + field.page_number + ".jpg";
+    //     console.log("Processing : ", field.name);
+
+    //     if (field.type == 'OCR_WORD') {
+    //         let region = field.regions[0].region;
+    //         let ocr_text = await perform_ocr(imagePath, field.data_type, region, scheduler);
+            
+    //         // let {suggestions, errors} = await correction.getSuggestions(ocr_text, field.correction);
+    //         // let correction_needed = suggestions.length > 0 || errors.length > 0;
+    //         ocr_output.push({
+    //             name : field.name,
+    //             field_type : field.type,
+    //             data_type : field.data_type,
+    //             text : ocr_text,
+    //             correction : field.correction
+    //         });
+
+    //     } else if (field.type == "OCR_CHAR") {
+
+    //         let ocr_text = await ocr_letter_by_letter(imagePath, field.data_type, field.regions, scheduler);
+    //         // let { suggestions, errors } = await correction.getSuggestions(ocr_text, field.correction);
+    //         // let correction_needed = suggestions.length > 0 || errors.length > 0;
+    //         ocr_output.push({
+    //             name : field.name,
+    //             field_type : field.type,
+    //             data_type : field.data_type,
+    //             text : ocr_text,
+    //             correction : field.correction
+    //         });
+
+
+    //     } else if (field.type == "CHECKBOX") {
+    //         let entries = await get_checkbox_input(imagePath, field.regions)
+    //         ocr_output.push({
+    //             name : field.name,
+    //             field_type : field.type,
+    //             data_type : field.data_type,
+    //             text : entries,
+    //             correction : field.correction
+    //         });
+    //     }
+    //     console.log("Completed : ", field.name)
+    //     scheduler.terminate();
     // }
 
-    let form_id = '1';
-    // console.log("Form ID : ", form_id)
-    // console.log("Image URL : ", imagePaths[0].url)
+    // // await createFormWithOCRResult(form_id, form_output);
+    // console.log(ocr_output)
+    // // save the ocr_output as json
+    // const ocr_result = JSON.stringify(ocr_output, null, 2);
+    const ocr_result_file_name = base_ocr_output_path + 'ocr_'+ form_id + '.json';
+    // fs.writeFileSync(ocr_result_file_name, ocr_result);
+    
+    // //call the correction module
+    let form_output = await correction.correct(ocr_result_file_name);
 
-    // read json data from crvs-schema.json
-    var data = fs.readFileSync(region_file, 'utf8');
-    var fields = JSON.parse(data)
-
-    for (let field of fields) {
-        // if(field.type == 'OCR_CHAR')
-        //     continue;
-        
-        var imagePath = base_image_path + form_id + "/jpg/" + form_id + "." + field.page_number + ".jpg";
-        console.log("Processing : ", field.name);
-        // only for first page of the form
-        if (field.type == 'OCR_WORD') {
-            let region = field.regions[0].region;
-            let data_type = field.data_type;
-            let ocr_text = await perform_ocr(imagePath, data_type, region, scheduler);
-            
-            let {suggestions, errors} = await correction.getSuggestions(ocr_text, field.correction);
-            let correction_needed = suggestions.length > 0 || errors.length > 0;
-            form_output[field.name] = {
-                text : ocr_text,
-                correction_needed,
-                suggestions,
-                errors
-            };
-
-        } else if (field.type == "OCR_CHAR") {
-
-            let data_type = field.data_type;
-            let ocr_text = await ocr_letter_by_letter(imagePath, data_type, field.regions, scheduler);
-            let { suggestions, errors } = await correction.getSuggestions(ocr_text, field.correction);
-            let correction_needed = suggestions.length > 0 || errors.length > 0;
-            form_output[field.name] = {
-                text : ocr_text,
-                correction_needed,
-                suggestions,
-                errors
-            };
-
-
-        } else if (field.type == "CHECKBOX") {
-            let entries = await get_checkbox_input(imagePath, field.regions)
-            let text;
-            let errors = [];
-            if (entries.length == 0) {
-                console.log(field.name,"has no entry");
-                continue;
-            }
-            if (entries.length > 1) {
-                errors.push("More than one entry found");
-            }
-            entries.length > 0 ? text = entries[0].entry : text = entries;
-            form_output[field.name] = {
-                text,
-                correction_needed : entries.length > 1,
-                suggestions : [],
-                errors
-            }
-
-        }
-        console.log("Completed : ", field.name)
-        scheduler.terminate();
-    }
-
-    await createFormWithOCRResult(form_id, form_output);
     res.status(200).json(form_output)
-    console.log(form_output)
-    return form_output
+    // console.log(form_output);
+    await createFormWithOCRResult(form_id, form_output);
+    console.log("Completed : ", form_id)
+    return;
 }
-
-// main().then( (form_output) => {
-//     console.log(form_output)
-// }).catch(error => {
-//     console.error('Error:', error);
-// });
 
 
 module.exports = app;

@@ -1,0 +1,542 @@
+[
+  {
+    "name": "STUDENT_NAME",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "RAZIN  RERZ ABEDIN A",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "STUDENT_NAME_ENGLISH",
+    "field_type": "OCR_CHAR",
+    "data_type": "STRING",
+    "text": "RAZ(NidleAJABlAGeDNFE.n.wXoLgioBi.PleIFR\"abag",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "STUDENT_NAME_ENG_DEBUG",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "RIAIZ(n Re(AZ alelef iN",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "BIRTH_CERTIFICATE_NUMBER",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "01725246174140574",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "BIRTH_DATE_DAY",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "18",
+    "correction": {
+      "type": "DATE",
+      "details": "DAY"
+    }
+  },
+  {
+    "name": "BIRTH_DATE_MONTH",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "05",
+    "correction": {
+      "type": "DATE",
+      "details": "MONTH"
+    }
+  },
+  {
+    "name": "BIRTH_DATE_YEAR",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "4199",
+    "correction": {
+      "type": "DATE",
+      "details": "YEAR"
+    }
+  },
+  {
+    "name": "BIRTH_DISTRICT",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "DHACA",
+    "correction": {
+      "type": "EDIT",
+      "details": "DISTRICT"
+    }
+  },
+  {
+    "name": "GENDER",
+    "field_type": "CHECKBOX",
+    "data_type": "STRING",
+    "text": [
+      {
+        "entry": "Male",
+        "index": 0
+      }
+    ],
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "NATIONALITY_BD",
+    "field_type": "CHECKBOX",
+    "data_type": "STRING",
+    "text": [
+      {
+        "entry": "Bangladeshi",
+        "index": 0
+      }
+    ],
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "NATIONALITY_OTHER",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "RELIGION",
+    "field_type": "CHECKBOX",
+    "data_type": "STRING",
+    "text": [
+      {
+        "entry": "Islam",
+        "index": 0
+      }
+    ],
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "CLASS",
+    "field_type": "CHECKBOX",
+    "data_type": "NUMBER",
+    "text": [
+      {
+        "entry": "10",
+        "index": 4
+      }
+    ],
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "ROLL",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "044",
+    "correction": {
+      "type": "DIGIT",
+      "details": "3"
+    }
+  },
+  {
+    "name": "MARITAL_STATUS",
+    "field_type": "CHECKBOX",
+    "data_type": "STRING",
+    "text": [
+      {
+        "entry": "Unmarried",
+        "index": 0
+      }
+    ],
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "DISABILITY",
+    "field_type": "CHECKBOX",
+    "data_type": "STRING",
+    "text": [
+      {
+        "entry": "No disability",
+        "index": 5
+      }
+    ],
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "BLOOD_GROUP",
+    "field_type": "CHECKBOX",
+    "data_type": "STRING",
+    "text": [
+      {
+        "entry": "B+",
+        "index": 2
+      }
+    ],
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "IF_MINORITY",
+    "field_type": "CHECKBOX",
+    "data_type": "STRING",
+    "text": [
+      {
+        "entry": "No",
+        "index": 1
+      }
+    ],
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "MINORITY",
+    "field_type": "CHECKBOX",
+    "data_type": "STRING",
+    "text": [],
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "MOTHERS_NAME",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "LoMpt KUNMINR",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "MOTHERS_NAME_ENG",
+    "field_type": "OCR_CHAR",
+    "data_type": "STRING",
+    "text": "TNMATRUMNATaJLloLAFu.FfiI,oF;w.itArEaPTXL':'E'QilB",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "MOTHER_NID",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "055211114228 354",
+    "correction": {
+      "type": "DIGIT",
+      "details": "17"
+    }
+  },
+  {
+    "name": "MOTHER_BIRTH_DATE_DAY",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "924",
+    "correction": {
+      "type": "DATE",
+      "details": "DAY"
+    }
+  },
+  {
+    "name": "MOTHER_BIRTH_DATE_MONTH",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "04",
+    "correction": {
+      "type": "DATE",
+      "details": "MONTH"
+    }
+  },
+  {
+    "name": "MOTHER_BIRTH_DATE_YEAR",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "16164",
+    "correction": {
+      "type": "DATE",
+      "details": "YEAR"
+    }
+  },
+  {
+    "name": "MOTHER_BIRTH_CERTIFICATE",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "1234566442 354321",
+    "correction": {
+      "type": "DIGIT",
+      "details": "17"
+    }
+  },
+  {
+    "name": "MOTHER_MOBILE_NO",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "00552403372",
+    "correction": {
+      "type": "DIGIT",
+      "details": "11"
+    }
+  },
+  {
+    "name": "MOTHER_OCCUPATION",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "GONT.  SERVIee  ((es) .",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "MOTHER_DEATH_YEAR",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "51175131",
+    "correction": {
+      "type": "DATE",
+      "details": "YEAR"
+    }
+  },
+  {
+    "name": "FATHER_NAME",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "D, ZHINARE AoE DN",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "FATHER_NAME_ENG",
+    "field_type": "OCR_CHAR",
+    "data_type": "STRING",
+    "text": "vDZAlNALElA)ADlNhi..ain)m,JilBL.oifieKoTE:.ARXF,r:",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "FATHER_NID",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "0130053503140574",
+    "correction": {
+      "type": "DIGIT",
+      "details": "17"
+    }
+  },
+  {
+    "name": "FATHER_BIRTH_DATE_DAY",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "14",
+    "correction": {
+      "type": "DATE",
+      "details": "DAY"
+    }
+  },
+  {
+    "name": "FATHER_BIRTH_DATE_MONTH",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "01",
+    "correction": {
+      "type": "DATE",
+      "details": "MONTH"
+    }
+  },
+  {
+    "name": "FATHER_BIRTH_DATE_YEAR",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "960",
+    "correction": {
+      "type": "DATE",
+      "details": "YEAR"
+    }
+  },
+  {
+    "name": "FATHER_BIRTH_CERTIFICATE",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "1724567444654321",
+    "correction": {
+      "type": "DIGIT",
+      "details": "17"
+    }
+  },
+  {
+    "name": "FATHER_MOBILE_NO",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "03005502",
+    "correction": {
+      "type": "DIGIT",
+      "details": "11"
+    }
+  },
+  {
+    "name": "FATHER_OCCUPATION",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "ENOINEE K",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "FATHER_DEATH_YEAR",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "31 1111",
+    "correction": {
+      "type": "DATE",
+      "details": "YEAR"
+    }
+  },
+  {
+    "name": "CURRENT_ADDRESS_DIVISION",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "DHAKA",
+    "correction": {
+      "type": "EDIT",
+      "details": "DIVISION"
+    }
+  },
+  {
+    "name": "CURRENT_ADDRESS_DISTRICT",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "V)HAKA",
+    "correction": {
+      "type": "EDIT",
+      "details": "DISTRICT"
+    }
+  },
+  {
+    "name": "CURRENT_ADDRESS_UPAZILLA_THANA",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "DH AN MOND",
+    "correction": {
+      "type": "EDIT",
+      "details": "UPAZILLA_THANA"
+    }
+  },
+  {
+    "name": "CURRENT_ADDRESS_CITYCORPORATION_POURASHOVA",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "DHAKA",
+    "correction": {
+      "type": "EDIT",
+      "details": "CITYCORPORATION_PAURASHAVA"
+    }
+  },
+  {
+    "name": "CURRENT_ADDRESS_UNION",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "Ny",
+    "correction": {
+      "type": "EDIT",
+      "details": "UNION"
+    }
+  },
+  {
+    "name": "CURRENT_ADDRESS_WARDNUMBER",
+    "field_type": "OCR_WORD",
+    "data_type": "NUMBER",
+    "text": "1",
+    "correction": {
+      "type": "EDIT",
+      "details": "WARDNUMBER"
+    }
+  },
+  {
+    "name": "CURRENT_ADDRESS_MOUJA",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "NIA",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "CURRENT_ADDRESS_VILLAGE_MOHOLLA",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "NA",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "CURRENT_ADDRESS_HOLDING_NUMBER",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "e e",
+    "correction": {
+      "type": "NONE",
+      "details": ""
+    }
+  },
+  {
+    "name": "CURRENT_ADDRESS_POST_OFFICE",
+    "field_type": "OCR_WORD",
+    "data_type": "STRING",
+    "text": "e ma En",
+    "correction": {
+      "type": "EDIT",
+      "details": "POST_OFFICE"
+    }
+  },
+  {
+    "name": "CURRENT_ADDRESS_POST_CODE",
+    "field_type": "OCR_CHAR",
+    "data_type": "NUMBER",
+    "text": "203",
+    "correction": {
+      "type": "EDIT",
+      "details": "POST_CODE"
+    }
+  }
+]
