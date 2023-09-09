@@ -37,7 +37,10 @@ model correction_upazilla {
   name        String
   district_id String   @db.Uuid
   district    correction_district @relation(fields: [district_id], references: [id])
+  union       correction_union[]
 }
+
+
 
 model correction_thana {
   id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
@@ -69,6 +72,14 @@ model correction_postoffice {
   district_id String   @db.Uuid
   district    correction_district @relation(fields: [district_id], references: [id])
 }
+
+model correction_union {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
+  upazilla_id String   @db.Uuid
+  upazilla    correction_upazilla @relation(fields: [upazilla_id], references: [id])
+}
+
 
 model pdf {
   form_id      String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid

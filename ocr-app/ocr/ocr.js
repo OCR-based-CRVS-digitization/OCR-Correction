@@ -3,6 +3,7 @@ const path = require('path');
 const correction = require('../correction/correction')
 const { createWorker, createScheduler } = require('tesseract.js');
 const Jimp = require('jimp');
+const { Poppler } = require('node-poppler');
 const fs = require('fs');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
@@ -20,6 +21,16 @@ const base_file_path = "../form-images/";
 const base_ocr_output_path = "ocr/ocr_output/";
 
 
+const createDirectories = () => {
+    if (!fs.existsSync(base_ocr_output_path)) {
+        fs.mkdirSync(base_ocr_output_path, { recursive: true });
+    }
+    if (!fs.existsSync(base_file_path)) {
+        fs.mkdirSync(base_file_path, { recursive: true });
+    }
+}
+
+
 const downloadFile = async(url, folderPath, filename, extension) => {
     try{
         const response = await axios({
@@ -33,7 +44,6 @@ const downloadFile = async(url, folderPath, filename, extension) => {
             console.log("filename after extension " + filename);
 
             const fullPath = path.join(folderPath, filename);
-            // if folder doesnt exit, make it
             if (!fs.existsSync(folderPath)) {
                 fs.mkdirSync(folderPath, { recursive: true });
             }
@@ -52,6 +62,28 @@ const downloadFile = async(url, folderPath, filename, extension) => {
     } catch (error) {
         console.error(`Error downloading file: ${error.message}`);
     }
+}
+
+async function splitPDFtoJPG(inputPDFPath, outputImagePath) {
+    
+    // mkdir if jpg directory doesnt exit
+    if (!fs.existsSync(outputImagePath)) {
+        fs.mkdirSync(outputImagePath, { recursive: true });
+    }
+
+    const outputfilePath = outputImagePath + 'output'; // Replace with your desired output image path
+
+    const poppler = new Poppler();
+    const options = {
+        firstPageToConvert: 1,
+        lastPageToConvert: 2,
+        jpegFile: true,
+        resolutionXAxis: 200,
+        resolutionYAxis: 200,
+    };
+
+    const res = await poppler.pdfToCairo(inputPDFPath, outputfilePath, options);
+    console.log(res);
 }
 
 const getExtension = (filename) => {
@@ -82,14 +114,14 @@ const calculate_average_brightness = async (imagePath, left, top, width, height)
     }
 }
 
-async function createFormWithOCRResult(form_id, ocr_result) {
+async function createFormWithOCRResult(form_id, ocr_result, workspace_id, eiin) {
     try{
         const form = await prisma.form_ocr_output.create({
             data: {
                 form_id: form_id,
                 ocr_result: ocr_result,
-                eiin : "123456",
-                workspace_id : "1",
+                eiin : eiin,
+                workspace_id : workspace_id,
             },
         });
         return form;
@@ -164,99 +196,91 @@ const get_checkbox_input = async (imagePath, regions) => {
 
 
 async function main(req,res) {
-    
+    createDirectories();
     var ocr_output = []
     const scheduler = createScheduler();
-    // let form_id = '2';
 
     // //todo each form has 4 pages
     // //todo we can get the url and page number from firebase's db
     var form_id = req.body.form_id;
     var file_url = req.body.url;
+    var workspace_id = req.body.workspace_id;
+    var eiin = req.body.eiin;
 
-    console.log("url splitting")
-    console.log(file_url.split('/')[7].split('?')[0]);
+    // console.log("url splitting")
+    // console.log(file_url.split('/')[7].split('?')[0]);
     let extension = getExtension(file_url.split('/')[7].split('?')[0]);
+    extension = 'pdf'; //! fix later
+    let downloadPath = base_file_path + form_id + "/";
+    await downloadFile(file_url, downloadPath, form_id, extension).then(() => {
+        console.log("Downloaded file. splitting pdf into image");
+        splitPDFtoJPG(downloadPath + form_id + "." + extension, downloadPath + "jpg/");
+        }).catch((error) => {
+            console.log("Error downloading file")
+            console.log(error)
+        });
+    
 
-
-    await downloadFile(file_url, base_file_path + form_id + "/", form_id, extension);
-    // TODO divide the file into pages and image for each page
-    // TODO save the image in the local storage
-    // imagePaths.push({
-        //     url : req.body.url,
-        //     page_number : 1
-        // })
-        // //download the image locally
-        // for (let imagePath of imagePaths) {
-            //     await downloadImage(imagePath.url, base_image_path + form_id + "/jpg/", form_id + "." + imagePath.page_number + ".jpg")
-            // }
-            
-            
-    // get pdf from firebase and divide it into pages with page numbers as the name
-    // console.log("Form ID : ", form_id)
-    // console.log("Image URL : ", imagePaths[0].url)
 
     // read json data from crvs-schema.json
-    // var data = fs.readFileSync(crvs_schema_file, 'utf8');
-    // var fields = JSON.parse(data)
+    var data = fs.readFileSync(crvs_schema_file, 'utf8');
+    var fields = JSON.parse(data)
 
-    // for (let field of fields) {
-    //     // if(field.type == 'OCR_CHAR' || field.type == 'OCR_WORD')
-    //     //     continue;
-        
-    //     var imagePath = base_image_path + form_id + "/jpg/" + form_id + "." + field.page_number + ".jpg";
-    //     console.log("Processing : ", field.name);
+    for (let field of fields) {
+        var imagePath = base_file_path + form_id + "/jpg/output-" + field.page_number + ".jpg";
+        console.log("Processing : ", field.name);
 
-    //     if (field.type == 'OCR_WORD') {
-    //         let region = field.regions[0].region;
-    //         let ocr_text = await perform_ocr(imagePath, field.data_type, region, scheduler);
-    //         ocr_output.push({
-    //             name : field.name,
-    //             field_type : field.type,
-    //             data_type : field.data_type,
-    //             text : ocr_text,
-    //             correction : field.correction
-    //         });
+        if (field.type == 'OCR_WORD') {
+            let region = field.regions[0].region;
+            let ocr_text = await perform_ocr(imagePath, field.data_type, region, scheduler);
+            ocr_output.push({
+                name : field.name,
+                field_type : field.type,
+                data_type : field.data_type,
+                text : ocr_text,
+                correction : field.correction
+            });
 
-    //     } else if (field.type == "OCR_CHAR") {
+        } else if (field.type == "OCR_CHAR") {
 
-    //         let ocr_text = await ocr_letter_by_letter(imagePath, field.data_type, field.regions, scheduler);
-    //         ocr_output.push({
-    //             name : field.name,
-    //             field_type : field.type,
-    //             data_type : field.data_type,
-    //             text : ocr_text,
-    //             correction : field.correction
-    //         });
+            let ocr_text = await ocr_letter_by_letter(imagePath, field.data_type, field.regions, scheduler);
+            ocr_output.push({
+                name : field.name,
+                field_type : field.type,
+                data_type : field.data_type,
+                text : ocr_text,
+                correction : field.correction
+            });
 
 
-    //     } else if (field.type == "CHECKBOX") {
-    //         let entries = await get_checkbox_input(imagePath, field.regions)
-    //         ocr_output.push({
-    //             name : field.name,
-    //             field_type : field.type,
-    //             data_type : field.data_type,
-    //             text : entries,
-    //             correction : field.correction
-    //         });
-    //     }
-    //     console.log("Completed : ", field.name)
-    //     scheduler.terminate();
-    // }
+        } else if (field.type == "CHECKBOX") {
+            let entries = await get_checkbox_input(imagePath, field.regions)
+            ocr_output.push({
+                name : field.name,
+                field_type : field.type,
+                data_type : field.data_type,
+                text : entries,
+                correction : field.correction
+            });
+        }
+        console.log("Completed : ", field.name)
+        scheduler.terminate();
+    }
 
-    // await createFormWithOCRResult(form_id, form_output);
     // console.log(ocr_output)
-    // save the ocr_output as json
-    // const ocr_result = JSON.stringify(ocr_output, null, 2);
-    // const ocr_result_file_name = base_ocr_output_path + 'ocr_'+ form_id + '.json';
-    // // fs.writeFileSync(ocr_result_file_name, ocr_result);
-    
-    // //call the correction module
-    // let form_output = await correction.correct(ocr_result_file_name);
+    // // save the ocr_output as json
+    const ocr_result = JSON.stringify(ocr_output, null, 2);
+    const ocr_result_file_name = base_ocr_output_path + 'ocr_'+ form_id + '.json';
+    fs.writeFileSync(ocr_result_file_name, ocr_result);
+    console.log("Saved ocr result as json")
 
-    // res.status(200).json(form_output)
+    
+    //call the correction module
+    console.log("Calling correction module")
+    let form_output = await correction.correct(ocr_result_file_name);
+    res.status(200).json(form_output)
     // console.log(form_output)
-    // await createFormWithOCRResult(form_id, form_output);
+    await createFormWithOCRResult(form_id, form_output, workspace_id, eiin);
     console.log("Completed : ", form_id)
     return;
 }

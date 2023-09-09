@@ -85,7 +85,7 @@ def new_field_creator(file, json_file):
     with open(file, 'r') as txtfile:
         lines = txtfile.readlines()
         for line in lines:
-            # if the line starts with a letter
+            # if the line starts with a letter, means a new field details is in this line
             if line[0].isalpha():
                 fragments = line.strip().split(',')
                 field_name = fragments[0]
@@ -122,7 +122,7 @@ def new_field_creator(file, json_file):
                     if field_type == 'CHECKBOX' :
                         # get the non filled form Image
                         entry = line[1] # the entry name is after the ':' symbol
-                        input_path = '../form-images/base-form/' + page_number + '.jpg'
+                        input_path = 'base-form/' + page_number + '.jpg'
                         brightness = get_average_brightness(input_path, [left, top, width, height])
                         regions.append({"index" : index, "region" : [left, top, width, height], "entry" : entry, "brightness" : brightness})
                     else :
@@ -135,6 +135,6 @@ def new_field_creator(file, json_file):
         
 
 if __name__ == "__main__":
-    csv_file = 'region(new).txt'
+    csv_file = 'region(less-ocr-char).txt'
     json_file = 'crvs-schema.json'
     new_field_creator(csv_file, json_file)

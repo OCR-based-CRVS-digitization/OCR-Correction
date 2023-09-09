@@ -3,7 +3,7 @@
     "name": "EIIN",
     "field_type": "OCR_WORD",
     "data_type": "NUMBER",
-    "text": "81054",
+    "text": "11 11",
     "correction": {
       "type": "DIGIT",
       "details": "6"
@@ -13,7 +13,7 @@
     "name": "STUDENT_NAME",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "RAZIN  RERZ ABEDIN A",
+    "text": "S amivan Huwde,",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -23,7 +23,7 @@
     "name": "STUDENT_NAME_ENGLISH",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "RIA(Z (N (RIEAZ (AIB(ef (N L L L",
+    "text": "SAMLON HVPAl",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -33,7 +33,7 @@
     "name": "BIRTH_CERTIFICATE_NUMBER",
     "field_type": "OCR_WORD",
     "data_type": "NUMBER",
-    "text": "1552461178054",
+    "text": "2006309006670122",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -43,7 +43,7 @@
     "name": "BIRTH_DATE_DAY",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "18",
+    "text": "22",
     "correction": {
       "type": "DATE",
       "details": "DAY"
@@ -53,7 +53,7 @@
     "name": "BIRTH_DATE_MONTH",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "05",
+    "text": "02",
     "correction": {
       "type": "DATE",
       "details": "MONTH"
@@ -63,7 +63,7 @@
     "name": "BIRTH_DATE_YEAR",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "4199",
+    "text": "2014",
     "correction": {
       "type": "DATE",
       "details": "YEAR"
@@ -73,7 +73,7 @@
     "name": "BIRTH_DISTRICT",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "DHACA",
+    "text": "D HARA",
     "correction": {
       "type": "EDIT",
       "details": "DISTRICT"
@@ -141,7 +141,7 @@
     "name": "ROLL",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "044",
+    "text": "017",
     "correction": {
       "type": "DIGIT",
       "details": "3"
@@ -176,7 +176,7 @@
     "field_type": "CHECKBOX",
     "data_type": "STRING",
     "text": [
-      "B+"
+      "AB+"
     ],
     "correction": {
       "type": "NONE",
@@ -209,7 +209,7 @@
     "name": "MOTHERS_NAME",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "LoMpt KUNMINR",
+    "text": "ShLEH SHARMEN",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -219,7 +219,7 @@
     "name": "MOTHERS_NAME_ENG",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "TISIMIAIT RIOIMITINGAL T Lttt",
+    "text": "SAKEH (upMoo Lttt",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -229,7 +229,7 @@
     "name": "MOTHER_NID",
     "field_type": "OCR_WORD",
     "data_type": "NUMBER",
-    "text": "0952022180574",
+    "text": "127713921006722",
     "correction": {
       "type": "DIGIT",
       "details": "17"
@@ -239,7 +239,7 @@
     "name": "MOTHER_BIRTH_DATE_DAY",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "924",
+    "text": "24",
     "correction": {
       "type": "DATE",
       "details": "DAY"
@@ -249,7 +249,7 @@
     "name": "MOTHER_BIRTH_DATE_MONTH",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "04",
+    "text": "713",
     "correction": {
       "type": "DATE",
       "details": "MONTH"
@@ -259,7 +259,7 @@
     "name": "MOTHER_BIRTH_DATE_YEAR",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "16164",
+    "text": "9771",
     "correction": {
       "type": "DATE",
       "details": "YEAR"
@@ -269,7 +269,7 @@
     "name": "MOTHER_BIRTH_CERTIFICATE",
     "field_type": "OCR_WORD",
     "data_type": "NUMBER",
-    "text": "12245618754321",
+    "text": "197171306923607",
     "correction": {
       "type": "DIGIT",
       "details": "17"
@@ -279,7 +279,7 @@
     "name": "MOTHER_MOBILE_NO",
     "field_type": "OCR_WORD",
     "data_type": "NUMBER",
-    "text": "5524022",
+    "text": "18129772",
     "correction": {
       "type": "DIGIT",
       "details": "11"
@@ -289,7 +289,7 @@
     "name": "MOTHER_OCCUPATION",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "GONT.  SERVIee  ((es) .",
+    "text": "House wi",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -299,7 +299,7 @@
     "name": "MOTHER_DEATH_YEAR",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "51175131",
+    "text": "313531",
     "correction": {
       "type": "DATE",
       "details": "YEAR"
@@ -309,7 +309,7 @@
     "name": "FATHER_NAME",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "D, ZHINARE AoE DN",
+    "text": "Nk;dnhl Huda Mori",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -319,7 +319,7 @@
     "name": "FATHER_NAME_ENG",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "WD (ZIRITINWAEL (AMBIEDTINE Lttt",
+    "text": "NglcMv (Ll (HIvDIA (MONE L",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -329,7 +329,7 @@
     "name": "FATHER_NID",
     "field_type": "OCR_WORD",
     "data_type": "NUMBER",
-    "text": "03005031054",
+    "text": "1191653023236827",
     "correction": {
       "type": "DIGIT",
       "details": "17"
@@ -339,7 +339,7 @@
     "name": "FATHER_BIRTH_DATE_DAY",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "14",
+    "text": "29",
     "correction": {
       "type": "DATE",
       "details": "DAY"
@@ -349,7 +349,7 @@
     "name": "FATHER_BIRTH_DATE_MONTH",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "01",
+    "text": "0",
     "correction": {
       "type": "DATE",
       "details": "MONTH"
@@ -359,7 +359,7 @@
     "name": "FATHER_BIRTH_DATE_YEAR",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "960",
+    "text": "12665",
     "correction": {
       "type": "DATE",
       "details": "YEAR"
@@ -369,7 +369,7 @@
     "name": "FATHER_BIRTH_CERTIFICATE",
     "field_type": "OCR_WORD",
     "data_type": "NUMBER",
-    "text": "112124568407624321",
+    "text": "1266297202512317",
     "correction": {
       "type": "DIGIT",
       "details": "17"
@@ -379,7 +379,7 @@
     "name": "FATHER_MOBILE_NO",
     "field_type": "OCR_WORD",
     "data_type": "NUMBER",
-    "text": "151010950",
+    "text": "0181124468",
     "correction": {
       "type": "DIGIT",
       "details": "11"
@@ -389,7 +389,7 @@
     "name": "FATHER_OCCUPATION",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "ENOINEE K",
+    "text": "Teachen",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -399,7 +399,7 @@
     "name": "FATHER_DEATH_YEAR",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "31 1111",
+    "text": "4 111 7",
     "correction": {
       "type": "DATE",
       "details": "YEAR"
@@ -409,7 +409,7 @@
     "name": "CURRENT_ADDRESS_DIVISION",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "DHAKA",
+    "text": "DHALA",
     "correction": {
       "type": "EDIT",
       "details": "DIVISION"
@@ -419,7 +419,7 @@
     "name": "CURRENT_ADDRESS_DISTRICT",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "V)HAKA",
+    "text": "DHAKA",
     "correction": {
       "type": "EDIT",
       "details": "DISTRICT"
@@ -429,7 +429,7 @@
     "name": "CURRENT_ADDRESS_UPAZILLA_THANA",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "DH AN MOND",
+    "text": "MOTLIHEE)",
     "correction": {
       "type": "EDIT",
       "details": "UPAZILLA_THANA"
@@ -439,7 +439,7 @@
     "name": "CURRENT_ADDRESS_CITYCORPORATION_POURASHOVA",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "DHAKA",
+    "text": "DHARA SOUTH",
     "correction": {
       "type": "EDIT",
       "details": "CITYCORPORATION_PAURASHAVA"
@@ -449,7 +449,7 @@
     "name": "CURRENT_ADDRESS_UNION",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "Ny",
+    "text": "",
     "correction": {
       "type": "EDIT",
       "details": "UNION"
@@ -459,7 +459,7 @@
     "name": "CURRENT_ADDRESS_WARDNUMBER",
     "field_type": "OCR_WORD",
     "data_type": "NUMBER",
-    "text": "1",
+    "text": "10",
     "correction": {
       "type": "EDIT",
       "details": "WARDNUMBER"
@@ -469,7 +469,7 @@
     "name": "CURRENT_ADDRESS_MOUJA",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "NIA",
+    "text": "o",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -479,7 +479,7 @@
     "name": "CURRENT_ADDRESS_VILLAGE_MOHOLLA",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "NA",
+    "text": "Tesormeddin Rood",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -489,7 +489,7 @@
     "name": "CURRENT_ADDRESS_HOLDING_NUMBER",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "e e",
+    "text": "e",
     "correction": {
       "type": "NONE",
       "details": ""
@@ -499,7 +499,7 @@
     "name": "CURRENT_ADDRESS_POST_OFFICE",
     "field_type": "OCR_WORD",
     "data_type": "STRING",
-    "text": "e ma En",
+    "text": "MOTLFHEEL",
     "correction": {
       "type": "EDIT",
       "details": "POST_OFFICE"
@@ -509,7 +509,7 @@
     "name": "CURRENT_ADDRESS_POST_CODE",
     "field_type": "OCR_CHAR",
     "data_type": "NUMBER",
-    "text": "203",
+    "text": "1704",
     "correction": {
       "type": "EDIT",
       "details": "POST_CODE"

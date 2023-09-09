@@ -1,3 +1,4 @@
+-[ ] get suggestions as the user fills up the form ?? 
 
 - [x] find an ocr - [`tesseract.js`]  [`google cloud api`]
     - [x] ocr should be fast
@@ -8,21 +9,26 @@
     - [ ] how to specify number or alphabet
     - [x] can detect bangla
     - [x] very fast
+-[x] DHAKA correction DB 
+-[x] CHITTAGONG correction DB 
 
 
-- [ ] checkbox multiple error
-- [ ] if pdf uploaded, then do pdf to jpg [without quality loss] and get page numbers from the output 
-- [ ] do more pdf writing
+The district does not cover all parts of Greater Dhaka, and Greater Dhaka does not include all parts of the district, which includes rural areas. The district consists of `49 upazilas/thanas`, `86 unions`, 974 mauzas, 1999 villages, `2 City Corporations, 129 City Wards`, 855 City Mahallas, `3 paurashavas`, `27 wards` and 133 mahallas.
+    
+- [ ] remove OCR_CHAR from the schema to make ocr faster
+- [x] checkbox multiple error
+- [x] if pdf uploaded, then do pdf to jpg [without quality loss] and get page numbers from the output
+- [x] save ocr output to intermediate file
+- [ ] remove ocr output file when correction is done TO SAVE SPACE
+- [x] do more pdf writing
 - [ ] use scanner instead of camscanner
     - [ ] scanner output rotate and translate before sending to ocr 
 - [x] do page 2 regions
-- [ ] get 4 pages and 4 links for the images from database
 - [ ] get user feedback
 
 - [x] installed tesseract.js
 - [x] installed prisma
-- [x] image from firebase -> download -> ocr
-- [ ] 
+- [x] image from firebase -> download -> ocr 
 
 
 
@@ -38,8 +44,6 @@ we can export those coordinates as we like. chatgpt had this to say
 ```
 Choose an Image Annotation Tool: There are several image annotation tools available online that allow you to draw bounding boxes on an image. Some popular options include Labelbox, RectLabel, VGG Image Annotator (VIA), and many more. Choose one that suits your requirements and is easy to use.
 ```
-
- - the previous coordinates don't work perfectly idk why
     - we need to find a way to get the coordinates of the bounding boxes
     - found a way to manually get coordinates using [this link](https://pixspy.com/)
     
@@ -61,6 +65,7 @@ has name, page number, index and a regions array with multiple elements
 ### checkbox
 has name, page number, a region array containing all the options. 
 Each option has a region, an entry ( the name of the option ) and a brightness value
+checkbox only has the correction of multiple entries.
 
 
 ## how checkbox is being verified
@@ -72,6 +77,9 @@ if the input brightness is less than the average brightness, then we consider it
 set the tesseract ocr to only detect numbers or strings depending on the field. numbers are working, strings are not working yet.
 
 # Scheduler to run the ocr in parallel
+failed to make it work
+
+# CORRECTION
 
 ### NEEDED TO SPECIFY WHAT KIND OF CORRECTION WE WILL DO
 DATE:DAY
@@ -79,11 +87,26 @@ DATE:MONTH
 DATE:YEAR
 EDIT:DIVISION
 EDIT:DISTRICT
-EDIT:UPAZILLA_THANA
-EDIT:CITYCORPORATION_POURASHOVA
+EDIT:UPAZILLA_THANA -> ACCESSES UPAZILLA AND THANA TABLES,THEN UNION
+EDIT:CITYCORPORATION_PAURASHAVA -ACCESSES CITYCORPORATION AND PAURASHAVA TABLES
 EDIT:UNION
-EDIT:WARDNUMBER
-EDIT:MOUJA
-EDIT:VILLAGE_MOHOLLA
+EDIT:WARDNUMBER -> ACCESSES CITYCORPORATION AND PAURASHAVA TABLES
+-EDIT:MOUJA- BAAD
+-EDIT:VILLAGE_MOHOLLA- BAAD
 EDIT:POST_OFFICE
 NONE:
+
+
+
+
+# ERD of correction DB
+Division
+|
+Districts
+|
+____________________________________________________________________________________________
+|               |           |                                 |                            |
+Upazilla        Thana       City corporation - ward number    Paurashava - ward number     Post Office - Post code
+|
+|
+union

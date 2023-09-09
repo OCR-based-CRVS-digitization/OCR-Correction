@@ -216,16 +216,14 @@ async function getUnionsOfUpazilla(upazilla_ids) {
     }
 }
 
-async function getMaxWardOfCitycorporation(citycorporation_ids) {
+async function getMaxWardOfCitycorporation(citycorporation_id) {
     if (citycorporation_ids.length == 0) {
-        return [];
+        return 0;
     }
     try {
         const max_wards = await prisma.correction_citycorporation.findFirst({
             where: {
-                id: {
-                    in: citycorporation_ids
-                }
+                id: citycorporation_id
             },
             select: {
                 max_wardnumber: true
@@ -238,16 +236,14 @@ async function getMaxWardOfCitycorporation(citycorporation_ids) {
     }
 }
 
-async function getMaxWardOfPaurashava(paurashava_ids) {
+async function getMaxWardOfPaurashava(paurashava_id) {
     if (paurashava_ids.length == 0) {
-        return [];
+        return 0;
     }
     try {
         const max_wards = await prisma.correction_paurashava.findFirst({
             where: {
-                id: {
-                    in: paurashava_ids
-                }
+                id: paurashava_id
             },
             select: {
                 max_wardnumber: true

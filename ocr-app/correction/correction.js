@@ -26,11 +26,9 @@ function getSuggestionsFromRowNameField(text, rows) {
             suggestions.push(row.name);
             suggestion_ids.push(row.id)
         }
+        if (min == 0 )
+            return {suggestions : [], suggestion_ids : []};
     }
-    // if (min == 0)
-    //     return suggestions;
-    if (min == 0 )
-        return {suggestions : [], suggestion_ids : []};
     return {suggestions, suggestion_ids};
 }
 
@@ -89,6 +87,8 @@ async function getSuggestionsAndErrors(text, correction, field_type, suggested_a
 
                 let thanaRows = await correctiondb.getThanasOfDistrict(suggested_address.district_ids);
                 result = getSuggestionsFromRowNameField(text, thanaRows);
+                // console.log("in thana")
+                // console.log(thanaRows);
                 suggestions = suggestions.concat(result.suggestions);
                 if (suggestions.length != 0) {
                     errors = "Upazilla/Thana might have error";
@@ -109,7 +109,7 @@ async function getSuggestionsAndErrors(text, correction, field_type, suggested_a
                     errors = "Citycorporation/Paurashava might have error";
                 }
             } 
-            else if (correction_details == 'POSTOFFICE') 
+            else if (correction_details == 'POST_OFFICE') 
             {
                 let postofficeRows = await correctiondb.getPostofficesOfDistrict(suggested_address.district_ids);
                 let result = getSuggestionsFromRowNameField(text, postofficeRows);
@@ -119,15 +119,15 @@ async function getSuggestionsAndErrors(text, correction, field_type, suggested_a
                     errors = "Postoffice might have error";
                 }
             } 
-            // else if (correction_details == 'UNION') 
-            // {
-            //     let unionRows = await correctiondb.getUnionsOfUpazilla(suggested_address.upazilla_ids);
-            //     let result = getSuggestionsFromRowNameField(text, unionRows);
-            //     suggestions = result.suggestions;
-            //     if (suggestions.length != 0) {
-            //         errors = "Union might have error";
-            //     }
-            // }
+            else if (correction_details == 'UNION') 
+            {
+                let unionRows = await correctiondb.getUnionsOfUpazilla(suggested_address.upazilla_ids);
+                let result = getSuggestionsFromRowNameField(text, unionRows);
+                suggestions = result.suggestions;
+                if (suggestions.length != 0) {
+                    errors = "Union might have error";
+                }
+            }
             else if (correction_details == 'WARDNUMBER') {
                 let sug_city_corps = suggested_address.citycorporation_ids.length;
                 let sug_paurashavas = suggested_address.paurashava_ids.length;
@@ -150,22 +150,26 @@ async function getSuggestionsAndErrors(text, correction, field_type, suggested_a
                 }
             }
             else if (correction_details == 'POST_CODE') {
+                
+                if (text.length != 4) {
+                    errors = "Number length should be " + 4;
+                    break;
+                }
+                if (!utils.text_is_number(text)) {
+                    errors = "Number should only contain digits";
+                    break;
+                }
                 let sug_postoffices = suggested_address.postoffice_ids.length;
+                if (sug_postoffices == 0) {
+                    errors = "inadequate suggestions for postoffice. Need manual validation";
+                    break;
+                }
                 if (sug_postoffices > 1 ) {
                     // meaning there are multiple postoffice suggestions so multiple postcodes
                     errors = "multple suggestions for postoffice. Need manual validation";
                     break;
                 }
-                if (sug_postoffices == 0) {
-                    errors = "inadequate suggestions for postoffice. Need manual validation";
-                    if (text.length != 4) {
-                        errors = "Number length should be " + 4;
-                    }
-                    if (!utils.text_is_number(text)) {
-                        errors = "Number should only contain digits";
-                    }
-                    break;
-                }
+                //! assuming my edit distance is working very well
                 let post_code = await correctiondb.getPostCodeOfPostoffice(suggested_address.postoffice_ids[0]);
                 if (parseInt(text) != post_code) {
                     errors = "Post code does not match with postoffice";

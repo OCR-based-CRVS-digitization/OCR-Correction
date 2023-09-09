@@ -19,6 +19,7 @@
     "dotenv": "^16.3.1",
     "express": "latest",
     "jimp": "^0.22.10",
+    "node-poppler": "^6.2.7",
     "node-tesseract-ocr": "^2.2.1",
     "pg": "latest",
     "prompt": "latest",
