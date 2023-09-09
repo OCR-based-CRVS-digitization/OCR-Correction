@@ -16,28 +16,47 @@ app.post("/",main)
 
 
 const crvs_schema_file = '../schema/crvs-schema.json';
-const base_image_path = "../form-images/";
+const base_file_path = "../form-images/";
 const base_ocr_output_path = "ocr/ocr_output/";
 
 
-const downloadImage = async(url, folderPath, fileName) => {
-    try {
-        // Make a GET request to the image URL
-        const response = await axios.get(url, { responseType: 'arraybuffer' });
-        // Ensure the folderPath exists
-        if (!fs.existsSync(folderPath)) {
-            console.log(`Creating directory ${folderPath}`);
-            fs.mkdirSync(folderPath, { recursive: true });
-        }        
-        // Determine the full path to save the image
-        const imagePath = path.join(folderPath, fileName);
-        // Write the image data to the specified path
-        fs.writeFileSync(imagePath, Buffer.from(response.data));
+const downloadFile = async(url, folderPath, filename, extension) => {
+    try{
+        const response = await axios({
+            method: 'get',
+            url: url,
+            responseType: 'stream',
+        });
 
-        console.log(`Image downloaded and saved to ${imagePath}`);
+        if (response.status === 200) {
+            filename += "." + extension;
+            console.log("filename after extension " + filename);
+
+            const fullPath = path.join(folderPath, filename);
+            // if folder doesnt exit, make it
+            if (!fs.existsSync(folderPath)) {
+                fs.mkdirSync(folderPath, { recursive: true });
+            }
+            response.data.pipe(fs.createWriteStream(fullPath));
+
+            // Wait for the file to finish downloading
+            await new Promise((resolve, reject) => {
+                response.data.on('end', () => resolve());
+                response.data.on('error', (err) => reject(err));
+            });
+
+            console.log(`File downloaded and saved as ${fullPath}`);
+        } else {
+        console.error(`Failed to download file. HTTP status code: ${response.status}`);
+        }
     } catch (error) {
-        console.error('Error:', error.message);
+        console.error(`Error downloading file: ${error.message}`);
     }
+}
+
+const getExtension = (filename) => {
+    var parts = filename.split('.');
+    return parts[parts.length - 1];
 }
 
 const calculate_average_brightness = async (imagePath, left, top, width, height) => {
@@ -147,24 +166,33 @@ const get_checkbox_input = async (imagePath, regions) => {
 async function main(req,res) {
     
     var ocr_output = []
-    let imagePaths = []
     const scheduler = createScheduler();
-    let form_id = '2';
+    // let form_id = '2';
 
     // //todo each form has 4 pages
     // //todo we can get the url and page number from firebase's db
-    // var form_id = req.body.form_id;
+    var form_id = req.body.form_id;
+    var file_url = req.body.url;
+
+    console.log("url splitting")
+    console.log(file_url.split('/')[7].split('?')[0]);
+    let extension = getExtension(file_url.split('/')[7].split('?')[0]);
+
+
+    await downloadFile(file_url, base_file_path + form_id + "/", form_id, extension);
+    // TODO divide the file into pages and image for each page
+    // TODO save the image in the local storage
     // imagePaths.push({
-    //     url : req.body.url,
-    //     page_number : 1
-    // })
-    // //download the image locally
-    // for (let imagePath of imagePaths) {
-    //     await downloadImage(imagePath.url, base_image_path + form_id + "/jpg/", form_id + "." + imagePath.page_number + ".jpg")
-    // }
-
+        //     url : req.body.url,
+        //     page_number : 1
+        // })
+        // //download the image locally
+        // for (let imagePath of imagePaths) {
+            //     await downloadImage(imagePath.url, base_image_path + form_id + "/jpg/", form_id + "." + imagePath.page_number + ".jpg")
+            // }
+            
+            
     // get pdf from firebase and divide it into pages with page numbers as the name
-
     // console.log("Form ID : ", form_id)
     // console.log("Image URL : ", imagePaths[0].url)
 
@@ -220,15 +248,15 @@ async function main(req,res) {
     // console.log(ocr_output)
     // save the ocr_output as json
     // const ocr_result = JSON.stringify(ocr_output, null, 2);
-    const ocr_result_file_name = base_ocr_output_path + 'ocr_'+ form_id + '.json';
-    // fs.writeFileSync(ocr_result_file_name, ocr_result);
+    // const ocr_result_file_name = base_ocr_output_path + 'ocr_'+ form_id + '.json';
+    // // fs.writeFileSync(ocr_result_file_name, ocr_result);
     
-    //call the correction module
-    let form_output = await correction.correct(ocr_result_file_name);
+    // //call the correction module
+    // let form_output = await correction.correct(ocr_result_file_name);
 
-    res.status(200).json(form_output)
-    console.log(form_output)
-    await createFormWithOCRResult(form_id, form_output);
+    // res.status(200).json(form_output)
+    // console.log(form_output)
+    // await createFormWithOCRResult(form_id, form_output);
     console.log("Completed : ", form_id)
     return;
 }
