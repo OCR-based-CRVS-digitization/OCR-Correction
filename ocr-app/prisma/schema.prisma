@@ -101,8 +101,8 @@ model workspace {
 model form_ocr_output {
   id        BigInt      @id @default(autoincrement())
   form_id   String @unique
-  workspace_id String
-  eiin      String
+  workspace_id String 
+  eiin      String 
   ocr_result Json
   created_at DateTime @default(now())
 }
@@ -110,8 +110,8 @@ model form_ocr_output {
 model form_draft {
   id        BigInt      @id @default(autoincrement())
   form_id   String @unique
-  workspace_id String
-  eiin      String
+  workspace_id String 
+  eiin      String 
   draft     Json
   created_at DateTime @default(now())
 }

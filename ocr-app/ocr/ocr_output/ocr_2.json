@@ -84,10 +84,7 @@
     "field_type": "CHECKBOX",
     "data_type": "STRING",
     "text": [
-      {
-        "entry": "Male",
-        "index": 0
-      }
+      "Male"
     ],
     "correction": {
       "type": "NONE",
@@ -99,10 +96,7 @@
     "field_type": "CHECKBOX",
     "data_type": "STRING",
     "text": [
-      {
-        "entry": "Bangladeshi",
-        "index": 0
-      }
+      "Bangladeshi"
     ],
     "correction": {
       "type": "NONE",
@@ -124,10 +118,7 @@
     "field_type": "CHECKBOX",
     "data_type": "STRING",
     "text": [
-      {
-        "entry": "Islam",
-        "index": 0
-      }
+      "Islam"
     ],
     "correction": {
       "type": "NONE",
@@ -139,10 +130,7 @@
     "field_type": "CHECKBOX",
     "data_type": "NUMBER",
     "text": [
-      {
-        "entry": "10",
-        "index": 4
-      }
+      "10"
     ],
     "correction": {
       "type": "NONE",
@@ -164,10 +152,7 @@
     "field_type": "CHECKBOX",
     "data_type": "STRING",
     "text": [
-      {
-        "entry": "Unmarried",
-        "index": 0
-      }
+      "Unmarried"
     ],
     "correction": {
       "type": "NONE",
@@ -179,10 +164,7 @@
     "field_type": "CHECKBOX",
     "data_type": "STRING",
     "text": [
-      {
-        "entry": "No disability",
-        "index": 5
-      }
+      "No disability"
     ],
     "correction": {
       "type": "NONE",
@@ -194,10 +176,7 @@
     "field_type": "CHECKBOX",
     "data_type": "STRING",
     "text": [
-      {
-        "entry": "B+",
-        "index": 2
-      }
+      "B+"
     ],
     "correction": {
       "type": "NONE",
@@ -209,10 +188,7 @@
     "field_type": "CHECKBOX",
     "data_type": "STRING",
     "text": [
-      {
-        "entry": "No",
-        "index": 1
-      }
+      "No"
     ],
     "correction": {
       "type": "NONE",

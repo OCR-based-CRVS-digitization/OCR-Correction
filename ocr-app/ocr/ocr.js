@@ -68,7 +68,9 @@ async function createFormWithOCRResult(form_id, ocr_result) {
         const form = await prisma.form_ocr_output.create({
             data: {
                 form_id: form_id,
-                ocr_result: ocr_result
+                ocr_result: ocr_result,
+                eiin : "123456",
+                workspace_id : "1",
             },
         });
         return form;
@@ -132,10 +134,7 @@ const get_checkbox_input = async (imagePath, regions) => {
     for ( let regionInfo of regions) {
         let averageBrightness = await calculate_average_brightness(imagePath, regionInfo.region[0], regionInfo.region[1], regionInfo.region[2], regionInfo.region[3]);
         if ( regionInfo.brightness - averageBrightness > brightness_threshold) {
-            entries.push({
-                entry : regionInfo.entry,
-                index : regionInfo.index
-            })
+            entries.push(regionInfo.entry)
         }
     }
     // console.log(entries)
@@ -150,26 +149,26 @@ async function main(req,res) {
     var ocr_output = []
     let imagePaths = []
     const scheduler = createScheduler();
-
-    // // //todo each form has 4 pages
-    // // //todo we can get the url and page number from firebase's db
-    // // var form_id = req.body.form_id;
-    // // imagePaths.push({
-    // //     url : req.body.url,
-    // //     page_number : 1
-    // // })
-    // // //download the image locally
-    // // for (let imagePath of imagePaths) {
-    // //     await downloadImage(imagePath.url, base_image_path + form_id + "/jpg/", form_id + "." + imagePath.page_number + ".jpg")
-    // // }
-
-    // // get pdf from firebase and divide it into pages with page numbers as the name
-
     let form_id = '2';
-    // // console.log("Form ID : ", form_id)
-    // // console.log("Image URL : ", imagePaths[0].url)
 
-    // // read json data from crvs-schema.json
+    // //todo each form has 4 pages
+    // //todo we can get the url and page number from firebase's db
+    // var form_id = req.body.form_id;
+    // imagePaths.push({
+    //     url : req.body.url,
+    //     page_number : 1
+    // })
+    // //download the image locally
+    // for (let imagePath of imagePaths) {
+    //     await downloadImage(imagePath.url, base_image_path + form_id + "/jpg/", form_id + "." + imagePath.page_number + ".jpg")
+    // }
+
+    // get pdf from firebase and divide it into pages with page numbers as the name
+
+    // console.log("Form ID : ", form_id)
+    // console.log("Image URL : ", imagePaths[0].url)
+
+    // read json data from crvs-schema.json
     // var data = fs.readFileSync(crvs_schema_file, 'utf8');
     // var fields = JSON.parse(data)
 
@@ -183,9 +182,6 @@ async function main(req,res) {
     //     if (field.type == 'OCR_WORD') {
     //         let region = field.regions[0].region;
     //         let ocr_text = await perform_ocr(imagePath, field.data_type, region, scheduler);
-            
-    //         // let {suggestions, errors} = await correction.getSuggestions(ocr_text, field.correction);
-    //         // let correction_needed = suggestions.length > 0 || errors.length > 0;
     //         ocr_output.push({
     //             name : field.name,
     //             field_type : field.type,
@@ -197,8 +193,6 @@ async function main(req,res) {
     //     } else if (field.type == "OCR_CHAR") {
 
     //         let ocr_text = await ocr_letter_by_letter(imagePath, field.data_type, field.regions, scheduler);
-    //         // let { suggestions, errors } = await correction.getSuggestions(ocr_text, field.correction);
-    //         // let correction_needed = suggestions.length > 0 || errors.length > 0;
     //         ocr_output.push({
     //             name : field.name,
     //             field_type : field.type,
@@ -222,18 +216,18 @@ async function main(req,res) {
     //     scheduler.terminate();
     // }
 
-    // // await createFormWithOCRResult(form_id, form_output);
+    // await createFormWithOCRResult(form_id, form_output);
     // console.log(ocr_output)
-    // // save the ocr_output as json
+    // save the ocr_output as json
     // const ocr_result = JSON.stringify(ocr_output, null, 2);
     const ocr_result_file_name = base_ocr_output_path + 'ocr_'+ form_id + '.json';
     // fs.writeFileSync(ocr_result_file_name, ocr_result);
     
-    // //call the correction module
+    //call the correction module
     let form_output = await correction.correct(ocr_result_file_name);
 
     res.status(200).json(form_output)
-    // console.log(form_output);
+    console.log(form_output)
     await createFormWithOCRResult(form_id, form_output);
     console.log("Completed : ", form_id)
     return;
